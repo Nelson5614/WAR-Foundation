@@ -34,7 +34,7 @@
                     <div class="justify-end">
 
                         <div class="mx-4">
-                            <a href="{{ route('staff.create') }}" class=" px-4 py-1 rounded-md bg-blue-700 text-white">
+                            <a href="{{ route('staff.create') }}" class=" px-2 py-1 rounded-md bg-blue-700 text-white">
                                 Add Staff Memeber
                                 <i class="fas fa-plus mx-2"></i>
                             </a>

@@ -36,7 +36,18 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required|string|max:255',
+            'manager'=>'required|string|max:255',
+            'start_date'=>'required|date|max:255',
+            'end_date'=>'required|date|max:255',
+            'status' => 'required|string|in:active,in_progress,complete',
+            'description'=>'required|string|max:255'
+        ]);
+
+       Project::create($request->all());
+
+        return redirect()->back()->with('success', 'You have just added a new project successfully! Goodluck');
     }
 
     /**
@@ -58,7 +69,8 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -68,9 +80,20 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $request->validate([
+            'title'=>'required|string|max:255',
+            'manager'=>'required|string|max:255',
+            'start_date'=>'required|date|max:255',
+            'end_date'=>'required|date|max:255',
+            'status' => 'required|string|in:active,in_progress,complete',
+            'description'=>'required|string|max:255'
+        ]);
+
+       $project->update($request->all());
+
+        return redirect()->back()->with('success', 'Project Updated successfully! ');
     }
 
     /**
@@ -81,6 +104,9 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $project->delete();
+
+        return redirect()->route('projects.index')->with('success', 'Project deleted successfully');
     }
 }
