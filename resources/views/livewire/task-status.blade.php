@@ -1,13 +1,12 @@
 
 <div>
 
-    @livewire('project-view-modal')
+    @livewire('task-view-modal')
     <div class="bg-white overflow-auto">
         <table class="min-w-full bg-white">
             <thead class="bg-gray-800 text-white">
                 <tr>
                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Title</th>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Project Manager</th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Start Date</th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">End Date</th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Status</th>
@@ -16,47 +15,46 @@
                 </tr>
             </thead>
             <tbody class="text-gray-700">
-                @foreach ($projects as $project)
+                @foreach ($tasks as $task)
                 <tr class="{{ $loop->index % 2 == 1? 'bg-gray-300': '' }}">
 
-                    <td class="w-1/3 text-left py-3 px-4">{{ $project->title }}</td>
-                    <td class="w-1/3 text-left py-3 px-4">{{ $project->manager }}</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" >{{ $project->start_date }}</a></td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500">{{ $project->end_date }}</a></td>
+                    <td class="w-1/3 text-left py-3 px-4">{{ $task->title }}</td>
+                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" >{{ $task->start_date }}</a></td>
+                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500">{{ $task->end_date }}</a></td>
                     <td class="w-1/3 text-left py-3 px-4">
-                        @if ($project->status == 'complete')
-                        <span class="text-red-500">{{ $project->status }}</span>
+                        @if ($task->status == 'complete')
+                        <span class="text-red-500">{{ $task->status }}</span>
                         @endif
-                        @if ($project->status == 'active')
-                        <span class="text-green-500">{{ $project->status }}</span>
+                        @if ($task->status == 'active')
+                        <span class="text-green-500">{{ $task->status }}</span>
                         @endif
-                        @if ($project->status == 'in_progress')
-                        <span class="text-yellow-500">{{ $project->status }}</span>
+                        @if ($task->status == 'in_progress')
+                        <span class="text-yellow-500">{{ $task->status }}</span>
                         @endif
                     </td>
-                    <td class="w-1/3 text-left py-3 px-4">{{ $project->description }}</td>
+                    <td class="w-1/3 text-left py-3 px-4">{{ $task->description }}</td>
                     <td>
                         <div class="flex">
                             <div class="px-1">
                                 <div class="">
 
 
-                                    <button  class="bg-blue-700 py-2 px-2 text-white rounded-md" wire:click="$emit('openModal', {{ $project->id }})">View</button>
+                                    <button  class="bg-blue-700 py-2 px-2 text-white rounded-md" wire:click="$emit('openModal', {{ $task->id }})">View</button>
                                 </div>
 
                             </div>
                             <div class="px-1">
                                 <div class=" mt-2">
 
-                                    <a href="{{ route('projects.edit', $project->id) }}" class="bg-green-700 py-2 px-2 text-white rounded-md">Edit</a>
+                                    <a href="{{ route('tasks.edit', $task->id) }}" class="bg-green-700 py-2 px-2 text-white rounded-md">Edit</a>
                                 </div>
 
                             </div>
                             <div class="px-1">
-                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="bg-red-600 py-2 px-2 text-white rounded-md" wire:confirm="Are you sure you want to delete this project?">Delete</button>
+                                    <button class="bg-red-600 py-2 px-2 text-white rounded-md">Delete</button>
                                 </form>
                             </div>
                         </div>
@@ -70,3 +68,4 @@
 
     </div>
 </div>
+

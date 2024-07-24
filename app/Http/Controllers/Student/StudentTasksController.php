@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Project;
+namespace App\Http\Controllers\Student;
+use App\Models\StudentTasks;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ProjectsController extends Controller
+class StudentTasksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(10);
-        return view('admin.projects', compact('projects'));
+        $tasks = StudentTasks::paginate(10);
+        return view('students.tasks', compact('tasks'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.index');
+        return view('students.mytasks.index');
     }
 
     /**
@@ -38,16 +38,15 @@ class ProjectsController extends Controller
     {
         $request->validate([
             'title'=>'required|string|max:255',
-            'manager'=>'required|string|max:255',
             'start_date'=>'required|date|max:255',
             'end_date'=>'required|date|max:255',
             'status' => 'required|string|in:active,in_progress,complete',
             'description'=>'required|string|max:255'
         ]);
 
-       Project::create($request->all());
+       StudentTasks::create($request->all());
 
-        return redirect()->back()->with('success', 'You have just added a new project successfully! Goodluck');
+        return redirect()->back()->with('success', 'You have just added a new Task successfully! Goodluck');
     }
 
     /**
@@ -69,8 +68,8 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        $project = Project::findOrFail($id);
-        return view('admin.projects.edit', compact('project'));
+        $tasks = StudentTasks::findOrFail($id);
+        return view('students.mytasks.edit', compact('tasks'));
     }
 
     /**
@@ -80,20 +79,19 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, StudentTasks $tasks)
     {
         $request->validate([
             'title'=>'required|string|max:255',
-            'manager'=>'required|string|max:255',
             'start_date'=>'required|date|max:255',
             'end_date'=>'required|date|max:255',
             'status' => 'required|string|in:active,in_progress,complete',
             'description'=>'required|string|max:255'
         ]);
 
-       $project->update($request->all());
+       $tasks->update($request->all());
 
-        return redirect()->back()->with('success', 'Project Updated successfully! ');
+        return redirect()->back()->with('success', 'Task Updated successfully! ');
     }
 
     /**
@@ -104,9 +102,9 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::findOrFail($id);
-        $project->delete();
+        $tasks = StudentTasks::findOrFail($id);
+        $tasks->delete();
 
-        return redirect()->route('projects.index')->with('success', 'Project deleted successfully');
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully');
     }
 }

@@ -1,5 +1,5 @@
 
-@extends('layouts.admin')
+@extends('layouts.student')
 
 @section('content')
 
@@ -21,7 +21,7 @@
 
         <div class="w-full overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Manage Projects</h1>
+                <h1 class="text-3xl text-black pb-6">Manage Tasks</h1>
 
 
                 <div class="w-full mt-12">
@@ -29,22 +29,22 @@
                         <div>
 
                             <p class="text-xl pb-3 flex items-center">
-                                <i class="fas fa-list mr-3"></i> Projects
+                                <i class="fas fa-list mr-3"></i> Tasks
                             </p>
                         </div>
                         <div class="justify-end">
 
                             <div class="mx-4">
-                                <a href="{{ route('projects.create') }}" class=" px-2 py-1 rounded-md bg-blue-700 text-white">
-                                    Add New Project
+                                <a href="{{ route('tasks.create') }}" class=" px-2 py-1 rounded-md bg-blue-700 text-white">
+                                    Add New Task
                                     <i class="fas fa-plus mx-2"></i>
                                 </a>
                             </div>
                         </div>
 
                     </div>
-                    @livewire('project-status')
-                    {{ $projects->links() }}
+                    @livewire('task-status')
+                    {{ $tasks->links() }}
                 </div>
             </main>
 
