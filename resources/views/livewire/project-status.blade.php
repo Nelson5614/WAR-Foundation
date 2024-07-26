@@ -2,28 +2,28 @@
 <div>
 
     @livewire('project-view-modal')
-    <div class="bg-white overflow-auto">
+    <div class="overflow-auto bg-white">
         <table class="min-w-full bg-white">
-            <thead class="bg-gray-800 text-white">
+            <thead class="text-white bg-gray-800">
                 <tr>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Title</th>
-                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Project Manager</th>
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Start Date</th>
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">End Date</th>
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Status</th>
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
-                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
+                    <th class="w-1/3 px-4 py-3 text-sm font-semibold text-left uppercase">Title</th>
+                    <th class="w-1/3 px-4 py-3 text-sm font-semibold text-left uppercase">Project Manager</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left uppercase">Start Date</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left uppercase">End Date</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left uppercase">Status</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left uppercase">Description</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left uppercase">Actions</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">
                 @foreach ($projects as $project)
                 <tr class="{{ $loop->index % 2 == 1? 'bg-gray-300': '' }}">
 
-                    <td class="w-1/3 text-left py-3 px-4">{{ $project->title }}</td>
-                    <td class="w-1/3 text-left py-3 px-4">{{ $project->manager }}</td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" >{{ $project->start_date }}</a></td>
-                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500">{{ $project->end_date }}</a></td>
-                    <td class="w-1/3 text-left py-3 px-4">
+                    <td class="w-1/3 px-4 py-3 text-left">{{ $project->title }}</td>
+                    <td class="w-1/3 px-4 py-3 text-left">{{ $project->manager }}</td>
+                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500" >{{ $project->start_date }}</a></td>
+                    <td class="px-4 py-3 text-left"><a class="hover:text-blue-500">{{ $project->end_date }}</a></td>
+                    <td class="w-1/3 px-4 py-3 text-left">
                         @if ($project->status == 'complete')
                         <span class="text-red-500">{{ $project->status }}</span>
                         @endif
@@ -34,31 +34,39 @@
                         <span class="text-yellow-500">{{ $project->status }}</span>
                         @endif
                     </td>
-                    <td class="w-1/3 text-left py-3 px-4">{{ $project->description }}</td>
+                    <td class="w-1/3 px-4 py-3 text-left">{{ $project->description }}</td>
                     <td>
                         <div class="flex">
                             <div class="px-1">
-                                <div class="">
+
+                                @can('view projects')
+
+                                <button  class="px-2 py-2 text-white bg-blue-700 rounded-md" wire:click="$emit('openModal', {{ $project->id }})">View</button>
+
+                                @endcan
 
 
-                                    <button  class="bg-blue-700 py-2 px-2 text-white rounded-md" wire:click="$emit('openModal', {{ $project->id }})">View</button>
-                                </div>
 
                             </div>
                             <div class="px-1">
-                                <div class=" mt-2">
-
-                                    <a href="{{ route('projects.edit', $project->id) }}" class="bg-green-700 py-2 px-2 text-white rounded-md">Edit</a>
+                                <div class="mt-2 ">
+                                    @can('edit projects')
+                                    <a href="{{ route('projects.edit', $project->id) }}" class="px-2 py-2 text-white bg-green-700 rounded-md">Edit</a>
+                                    @endcan
                                 </div>
 
                             </div>
+
+                            @can('delete projects')
+
                             <div class="px-1">
                                 <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="bg-red-600 py-2 px-2 text-white rounded-md" wire:confirm="Are you sure you want to delete this project?">Delete</button>
+                                    <button class="px-2 py-2 text-white bg-red-600 rounded-md" wire:confirm="Are you sure you want to delete this project?">Delete</button>
                                 </form>
                             </div>
+                            @endcan
                         </div>
                     </td>
                 </tr>

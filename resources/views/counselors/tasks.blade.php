@@ -1,5 +1,5 @@
 
-@extends('layouts.student')
+@extends('layouts.counselor')
 
 @section('content')
 
@@ -35,7 +35,7 @@
                         <div class="justify-end">
 
                             <div class="mx-4">
-                                <a href="{{ route('tasks.create') }}" class=" px-2 py-1 rounded-md bg-blue-700 text-white">
+                                <a href="{{ route('counselor-tasks.create') }}" class=" px-2 py-1 rounded-md bg-blue-700 text-white">
                                     Add New Task
                                     <i class="fas fa-plus mx-2"></i>
                                 </a>
@@ -43,10 +43,8 @@
                         </div>
 
                     </div>
-                    <div class="bg-white overflow-auto">
 
-                    </div>
-                    @livewire('task-status')
+                    @livewire('counselor-task-status')
                     {{ $tasks->links() }}
                 </div>
             </main>

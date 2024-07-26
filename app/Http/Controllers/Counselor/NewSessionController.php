@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Student;
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Models\StudentSession;
+namespace App\Http\Controllers\Counselor;
 use App\Http\Controllers\Controller;
-use App\Notifications\SessionRequested;
+use Illuminate\Http\Request;
+use App\Models\SetANewSession;
 
-class SessionController extends Controller
+class NewSessionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class SessionController extends Controller
      */
     public function index()
     {
-        return view('students.session');
+        return view('counselors.createsession');
     }
 
     /**
@@ -37,7 +35,6 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'description' => 'required|string|max:255',
             'name'=>'required|string|max:255',
@@ -48,28 +45,8 @@ class SessionController extends Controller
             'date'=>'required|date|max:255'
         ]);
 
-        // Validate the incoming request data. In this case, only 'details' is required.
-        $sessionRequest = StudentSession::create([
-            'student_id' => auth()->id(),
-            'description' => $request->description,
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'address' => $request->address,
-            'date' => $request->date,
-        ]);
-
-        // Notify all counselors about the new session request.
-        // Assuming role_id 4 is for counselors. Adjust this if your role IDs are different.
-        $counselors = User::where('role_id', 2)->get();
-        foreach ($counselors as $counselor) {
-            // Notify each counselor using the SessionRequested notification.
-            $counselor->notify(new SessionRequested($sessionRequest));
-       }
-
-
-        return redirect()->back()->with('success', 'Your request has been submited, We will contact you shortly');
+        SetANewSession::create($request->all());
+        return redirect()->back()->with('success', 'New Session created Successfully');
     }
 
     /**
@@ -91,7 +68,8 @@ class SessionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $setnewsession = SetANewSession::findOrFail($id);
+        return view('counselors.upcomingSessions.edit', compact('setnewsession'));
     }
 
     /**
@@ -101,9 +79,20 @@ class SessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,SetANewSession $setnewsession)
     {
-        //
+        $request->validate([
+            'description' => 'required|string|max:255',
+            'name'=>'required|string|max:255',
+            'surname'=>'required|string|max:255',
+            'email'=>'required|string|email|max:255',
+            'phone'=>'required|string|max:255',
+            'address'=>'required|string|max:255',
+            'date'=>'required|date|max:255'
+        ]);
+
+        $setnewsession->update($request->all());
+        return redirect()->back()->with('success', 'Session Updated successfully! ');
     }
 
     /**
@@ -114,6 +103,9 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $setnewsession = SetANewSession::findOrFail($id);
+        $setnewsession->delete();
+
+        return redirect()->back()->with('success', 'Session delete successfully');
     }
 }

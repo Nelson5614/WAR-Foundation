@@ -1,5 +1,5 @@
 
-@extends('layouts.admin')
+@extends('layouts.counselor')
 
 @section('content')
 
@@ -32,23 +32,18 @@
                                 <i class="mr-3 fas fa-list"></i> Projects
                             </p>
                         </div>
-                        <div class="justify-end">
-                            @can('add projects')
+                        @can('add projects')
 
-                            <div class="mx-4">
-                                <a href="{{ route('projects.create') }}" class="px-2 py-1 text-white bg-blue-700 rounded-md ">
-                                    Add New Project
-                                    <i class="mx-2 fas fa-plus"></i>
-                                </a>
-                            </div>
-                            @endcan
+                        <div class="mx-4">
+                            <a href="{{ route('projects.create') }}" class="px-2 py-1 text-white bg-blue-700 rounded-md ">
+                                Add New Project
+                                <i class="mx-2 fas fa-plus"></i>
+                            </a>
                         </div>
-
-
+                        @endcan
                     </div>
-
                     @livewire('project-status')
-                    {{ $projects->links() }}
+                    {{ $sharedprojects->links() }}
                 </div>
             </main>
 

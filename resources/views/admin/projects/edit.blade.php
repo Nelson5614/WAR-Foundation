@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group hidden">
                     <label for="status">Status</label>
                     <select id="status" name="status" class="form-control">
                         <option value="active" {{ (isset($project) && $project->status == 'active') ? 'selected' : '' }}>Active</option>

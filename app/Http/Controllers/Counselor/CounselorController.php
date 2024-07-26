@@ -8,6 +8,6 @@ class CounselorController extends Controller
 {
     public function index(){
 
-        return view('counselors.index');
+        return view('counselors.dashboard');
     }
 }

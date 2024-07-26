@@ -16,8 +16,13 @@ return new class extends Migration
         Schema::create('student_sessions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->text('details');
-            $table->string('status')->default('pending');
+            $table->text('description');
+            $table->string('name');
+            $table->string('surname');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('address');
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
