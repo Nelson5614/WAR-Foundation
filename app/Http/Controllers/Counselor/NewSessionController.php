@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Counselor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\SetANewSession;
+use App\Models\StudentSession;
 
 class NewSessionController extends Controller
 {
@@ -36,7 +36,8 @@ class NewSessionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description' => 'required|string|max:255',
+
+            'description' => 'required|string',
             'name'=>'required|string|max:255',
             'surname'=>'required|string|max:255',
             'email'=>'required|string|email|max:255|unique:staff',
@@ -45,7 +46,18 @@ class NewSessionController extends Controller
             'date'=>'required|date|max:255'
         ]);
 
-        SetANewSession::create($request->all());
+        $sessionRequest = StudentSession::create([
+            'student_id' => auth()->id(),
+            'description' => $request->description,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'date' => $request->date,
+        ]);
+
+
         return redirect()->back()->with('success', 'New Session created Successfully');
     }
 
@@ -68,7 +80,7 @@ class NewSessionController extends Controller
      */
     public function edit($id)
     {
-        $setnewsession = SetANewSession::findOrFail($id);
+        $setnewsession = StudentSession::findOrFail($id);
         return view('counselors.upcomingSessions.edit', compact('setnewsession'));
     }
 
@@ -79,10 +91,10 @@ class NewSessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,SetANewSession $setnewsession)
+    public function update(Request $request,StudentSession $setnewsession)
     {
         $request->validate([
-            'description' => 'required|string|max:255',
+            'description' => 'required|string',
             'name'=>'required|string|max:255',
             'surname'=>'required|string|max:255',
             'email'=>'required|string|email|max:255',
@@ -103,7 +115,7 @@ class NewSessionController extends Controller
      */
     public function destroy($id)
     {
-        $setnewsession = SetANewSession::findOrFail($id);
+        $setnewsession = StudentSession::findOrFail($id);
         $setnewsession->delete();
 
         return redirect()->back()->with('success', 'Session delete successfully');

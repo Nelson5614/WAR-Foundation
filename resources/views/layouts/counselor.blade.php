@@ -44,6 +44,10 @@
                     <i class="mr-3 fas fa-sticky-note"></i>
                     Upcoming Sessions
                 </a>
+                <a href="{{ route('counselor-student-files.index') }}" style="text-decoration: none;" class="flex items-center py-3 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 bi bi-file-earmark-fill"></i>
+                    Student Files
+                </a>
                 <a href="{{ route('counselor-tasks.index') }}" style="text-decoration: none;" class="flex items-center py-3 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
                     <i class="mr-3 fas fa-table"></i>
                     My Tasks
@@ -165,6 +169,10 @@
                     <a href="{{ route('upcoming-sessions.index') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
                         <i class="mr-3 fas fa-sticky-note"></i>
                         Upcoming Sessions
+                    </a>
+                    <a href="{{ route('counselor-student-files.index') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                        <i class="mr-3 bi bi-file-earmark-fill"></i>
+                        Student Files
                     </a>
                     <a href="{{ route('counselor-tasks.index') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
                         <i class="mr-3 fas fa-table"></i>

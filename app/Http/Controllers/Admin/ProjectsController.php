@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Permission;
 
 class ProjectsController extends Controller
 {
@@ -14,6 +15,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
+
         $projects = Project::paginate(10);
         return view('admin.projects', compact('projects'));
     }
@@ -36,6 +38,7 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+       $this->authorize('add projects');
         $request->validate([
             'title'=>'required|string|max:255',
             'manager'=>'required|string|max:255',
@@ -71,6 +74,8 @@ class ProjectsController extends Controller
     {
         $project = Project::findOrFail($id);
         return view('admin.projects.edit', compact('project'));
+
+       $this->authorize('edit projects');
     }
 
     /**
@@ -104,6 +109,7 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
+       $this->authorize('delete projects');
         $project = Project::findOrFail($id);
         $project->delete();
 

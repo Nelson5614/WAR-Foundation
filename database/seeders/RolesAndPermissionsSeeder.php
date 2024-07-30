@@ -21,28 +21,10 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create roles
-        if (!Role::where('name', 'admin')->exists()) {
-            $admin = Role::create(['name' => 'admin']);
-        } else {
-            $admin = Role::where('name', 'admin')->first();
-        }
-
-        if (!Role::where('name', 'counselor')->exists()) {
-            $counselor = Role::create(['name' => 'counselor']);
-        } else {
-            $counselor = Role::where('name', 'counselor')->first();
-        }
-        if (!Role::where('name', 'student')->exists()) {
-            $student = Role::create(['name' => 'student']);
-        } else {
-            $student = Role::where('name', 'student')->first();
-        }
-
-        if (!Role::where('name', 'member')->exists()) {
-            $member = Role::create(['name' => 'member']);
-        } else {
-            $member = Role::where('name', 'member')->first();
-        }
+        $admin = Role::create(['name' => 'admin']);
+        $counselor = Role::create(['name' => 'counselor']);
+        $student = Role::create(['name' => 'student']);
+        $member = Role::create(['name' => 'member']);
 
         //creating permmissions
         $viewProjects = Permission::create(['name' => 'view projects']);

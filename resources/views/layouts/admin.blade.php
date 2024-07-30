@@ -27,44 +27,52 @@
         @stack('styles')
         @livewireStyles
     </head>
-    <body class="bg-gray-100 font-family-karla flex overflow-auto">
-        <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+    <body class="flex overflow-auto bg-gray-100 font-family-karla">
+        <aside class="relative hidden w-64 h-screen shadow-xl bg-sidebar sm:block">
             <div class="p-6">
-                <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-                <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-plus mr-3"></i> Request Session
+                <a href="index.html" class="text-3xl font-semibold text-white uppercase hover:text-gray-300">Admin</a>
+                <button class="flex items-center justify-center w-full py-2 mt-5 font-semibold bg-white rounded-tr-lg rounded-bl-lg rounded-br-lg shadow-lg cta-btn hover:shadow-xl hover:bg-gray-300">
+                    <i class="mr-3 fas fa-plus"></i> Request Session
                 </button>
             </div>
-            <nav class="text-white text-base font-semibold pt-3">
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
-                    <i class="fas fa-tachometer-alt mr-3"></i>
+            <nav class="pt-3 text-base font-semibold text-white">
+                <a href="{{ route('admin.dashboard') }}" class="flex items-center py-3 pl-6 text-white active-nav-link nav-item">
+                    <i class="mr-3 fas fa-tachometer-alt"></i>
                     Dashboard
                 </a>
-                <a href="{{ route('staff.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                    <i class="fas fa-sticky-note mr-3"></i>
+                <a href="{{ route('staff.index') }}" class="flex items-center py-3 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-sticky-note"></i>
                     Manage Staff
                 </a>
-                <a href="{{ route('projects.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                    <i class="fas fa-table mr-3"></i>
+                <a href="{{ route('projects.index') }}" class="flex items-center py-3 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-table"></i>
                     Projects
                 </a>
-                <a href="{{ route('library.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                    <i class="fas fa-align-left mr-3"></i>
+                <a href="{{ route('library.index') }}" class="flex items-center py-3 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-align-left"></i>
                     Library
+                </a>
+                <a href="{{ route('faqs.index') }}" class="flex items-center py-3 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 bi bi-question-square-fill"></i>
+                    FAQs
+                </a>
+                <a href="{{ route('testimonials.index') }}" class="flex items-center py-3 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 bi bi-file-fill"></i>
+                    Testimonials
                 </a>
 
             </nav>
 
         </aside>
-        <div class="w-full flex flex-col h-screen overflow-y-auto">
+        <div class="flex flex-col w-full h-screen overflow-y-auto">
             <!-- Desktop Header -->
-            <header class="w-full justify-end items-center bg-white py-2 px-6 hidden sm:flex">
+            <header class="items-center justify-end hidden w-full px-6 py-2 bg-white sm:flex">
                 <nav >
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                         <div class="flex justify-between h-16">
                             <div class="flex">
                                 <!-- Logo -->
-                                <div class="shrink-0 flex items-center">
+                                <div class="flex items-center shrink-0">
 
                                 </div>
 
@@ -77,9 +85,9 @@
                             <livewire:profile-menu/>
 
                             <!-- Hamburger -->
-                            {{-- <div class="-mr-2 flex items-center sm:hidden">
-                                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            {{-- <div class="flex items-center -mr-2 sm:hidden">
+                                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                                    <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
@@ -91,10 +99,10 @@
             </header>
 
             <!-- Mobile Header & Nav -->
-            <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
+            <header x-data="{ isOpen: false }" class="w-full px-6 py-5 bg-sidebar sm:hidden">
                 <div class="flex items-center justify-between">
-                    <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-                    <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
+                    <a href="index.html" class="text-3xl font-semibold text-white uppercase hover:text-gray-300">Admin</a>
+                    <button @click="isOpen = !isOpen" class="text-3xl text-white focus:outline-none">
                         <i x-show="!isOpen" class="fas fa-bars"></i>
                         <i x-show="isOpen" class="fas fa-times"></i>
                     </button>
@@ -102,34 +110,42 @@
 
                 <!-- Dropdown Nav -->
                 <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-                    <a href="index.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
-                        <i class="fas fa-tachometer-alt mr-3"></i>
+                    <a href="index.html" class="flex items-center py-1 pl-4 text-white active-nav-link nav-item">
+                        <i class="mr-3 fas fa-tachometer-alt"></i>
                         Dashboard
                     </a>
-                    <a href="{{ route('staff.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                        <i class="fas fa-sticky-note mr-3"></i>
+                    <a href="{{ route('staff.index') }}" class="flex items-center py-1 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                        <i class="mr-3 fas fa-sticky-note"></i>
                         Manage Staff
                     </a>
-                    <a href="{{ route('projects.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                        <i class="fas fa-table mr-3"></i>
+                    <a href="{{ route('projects.index') }}" class="flex items-center py-1 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                        <i class="mr-3 fas fa-table"></i>
                         Projects
                     </a>
-                    <a href="{{ route('library.index') }}" class="flex  items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                        <i class="fas fa-align-left mr-3"></i>
+                    <a href="{{ route('library.index') }}" class="flex items-center py-1 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                        <i class="mr-3 fas fa-align-left"></i>
                         Library
+                    </a>
+                    <a href="{{ route('faqs.index') }}" class="flex items-center py-1 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                        <i class="mr-3 bi bi-question-square-fill"></i>
+                        FAQs
+                    </a>
+                    <a href="{{ route('testimonials.index') }}" class="flex items-center py-1 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                        <i class="bi bi-file-fill mr3"></i>
+                        Testimonials
                     </a>
 
                     <div class="pt-4 pb-1 border-t border-white">
                         <div class="flex items-center px-4">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <div class="shrink-0 mr-3">
-                                    <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <div class="mr-3 shrink-0">
+                                    <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 </div>
                             @endif
 
                             <div>
-                                <div class="font-medium text-base text-white">{{ Auth::user()->name }}</div>
-                                <div class="font-medium text-sm text-white">{{ Auth::user()->email }}</div>
+                                <div class="text-base font-medium text-white">{{ Auth::user()->name }}</div>
+                                <div class="text-sm font-medium text-white">{{ Auth::user()->email }}</div>
                             </div>
                         </div>
 
@@ -189,8 +205,8 @@
                     </div>
 
                 </nav>
-                <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-plus mr-3"></i> New Report
+                <!-- <button class="flex items-center justify-center w-full py-2 mt-5 font-semibold bg-white rounded-tr-lg rounded-bl-lg rounded-br-lg shadow-lg cta-btn hover:shadow-xl hover:bg-gray-300">
+                    <i class="mr-3 fas fa-plus"></i> New Report
                 </button> -->
             </header>
 

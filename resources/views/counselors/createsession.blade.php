@@ -72,14 +72,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="form-group hidden">
-                        <label for="status">Status</label>
-                        <select id="status" name="status" class="form-control">
-                            <option value="active" {{ (isset($task) && $task->status == 'active') ? 'selected' : '' }}>Active</option>
-                            <option value="in_progress" {{ (isset($task) && $task->status == 'In progress') ? 'selected' : '' }}>In Progress</option>
-                            <option value="complete" {{ (isset($task) && $task->status == 'complete') ? 'selected' : '' }}>Complete</option>
-                        </select>
-                    </div> --}}
+
 
                     <div class="mt-2">
                         <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Session Description</label>
@@ -90,7 +83,7 @@
                     </div>
 
                     <div class="mt-4">
-                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Request Session</button>
+                    <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Set Session</button>
                     </div>
                 </form>
 

@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Counselor;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\StudentSession;
+use App\Http\Controllers\Controller;
 
-class CounselorLibraryController extends Controller
+
+
+class StudentFilesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,8 @@ class CounselorLibraryController extends Controller
      */
     public function index()
     {
-        //
+
+        return view('counselors.studentfiles');
     }
 
     /**
@@ -23,7 +28,7 @@ class CounselorLibraryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -79,6 +84,13 @@ class CounselorLibraryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $studentfile = StudentSession::findOrFail($id);
+        $studentfile->delete();
+
+        return redirect()->back()->with('success', 'File deleted successfully');
     }
+
+
+
+
 }

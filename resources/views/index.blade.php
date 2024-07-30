@@ -1624,9 +1624,7 @@
     <!-- ====== About Section End -->
 
     <!-- ====== CTA Section Start -->
-    <section
-      class="relative z-10 overflow-hidden bg-primary py-20 lg:py-[115px]"
-    >
+    <section class="relative z-10 overflow-hidden bg-primary py-20 lg:py-[115px]">
       <div class="container mx-auto">
         <div class="relative overflow-hidden">
           <div class="flex flex-wrap items-stretch -mx-4">
@@ -1635,7 +1633,7 @@
                 <h2
                   class="mb-2.5 text-3xl font-bold text-white md:text-[38px] md:leading-[1.44]"
                 >
-                  <span>What Are You Looking For?</span>
+                  <span>What Are You Waiting For?</span>
                   <span class="text-3xl font-normal md:text-[40px]">
                     Get Started Now
                   </span>
@@ -1643,14 +1641,13 @@
                 <p
                   class="mx-auto mb-6 max-w-[515px] text-base leading-[1.5] text-white"
                 >
-                  There are many variations of passages of Lorem Ipsum but the
-                  majority have suffered in some form.
+                  Complete the registration form and contact us immediately to book your session
                 </p>
                 <a
-                  href="javascript:void(0)"
+                  href="{{ route('register') }}"
                   class="inline-block rounded-md border border-transparent bg-secondary px-7 py-3 text-base font-medium text-white transition hover:bg-[#0BB489]"
                 >
-                  Start using Play
+                  Register
                 </a>
               </div>
             </div>
@@ -1725,182 +1722,6 @@
     </section>
     <!-- ====== CTA Section End -->
 
-    <!-- ====== Pricing Section Start -->
-    <section
-      id="pricing"
-      class="relative z-20 overflow-hidden bg-white pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]"
-    >
-      <div class="container mx-auto">
-        <div class="flex flex-wrap -mx-4">
-          <div class="w-full px-4">
-            <div class="mx-auto mb-[60px] max-w-[510px] text-center">
-              <span class="block mb-2 text-lg font-semibold text-primary">
-                Pricing Table
-              </span>
-              <h2
-                class="mb-3 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]"
-              >
-                Awesome Pricing Plan
-              </h2>
-              <p class="text-base text-body-color dark:text-dark-6">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-wrap justify-center -mx-4">
-          <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div
-              class="relative z-10 px-8 py-10 mb-10 overflow-hidden bg-white rounded-xl shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-14"
-            >
-              <span
-                class="block mb-5 text-xl font-medium text-dark dark:text-white"
-              >
-                Starter
-              </span>
-              <h2
-                class="mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]"
-              >
-                <span class="text-xl font-medium">$</span>
-                <span class="-ml-1 -tracking-[2px]">25.00</span>
-                <span
-                  class="text-base font-normal text-body-color dark:text-dark-6"
-                >
-                  Per Month
-                </span>
-              </h2>
-              <div class="mb-[50px]">
-                <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
-                  Features
-                </h5>
-                <div class="flex flex-col gap-[14px]">
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Up to 1 User
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    All UI components
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Lifetime access
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Free updates
-                  </p>
-                </div>
-              </div>
-              <a
-                href="javascript:void(0)"
-                class="inline-block py-3 text-base font-medium text-center text-white transition rounded-md bg-primary px-7 hover:bg-blue-dark"
-              >
-                Purchase Now
-              </a>
-            </div>
-          </div>
-          <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div
-              class="relative z-10 px-8 py-10 mb-10 overflow-hidden bg-white rounded-xl shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-14"
-            >
-              <p
-                class="absolute right-[-50px] top-[60px] inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-primary px-5 py-2 text-base font-medium text-white"
-              >
-                Recommended
-              </p>
-              <span
-                class="block mb-5 text-xl font-medium text-dark dark:text-white"
-              >
-                Basic
-              </span>
-              <h2
-                class="mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]"
-              >
-                <span class="text-xl font-medium">$</span>
-                <span class="-ml-1 -tracking-[2px]">59.00</span>
-                <span
-                  class="text-base font-normal text-body-color dark:text-dark-6"
-                >
-                  Per Month
-                </span>
-              </h2>
-              <div class="mb-[50px]">
-                <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
-                  Features
-                </h5>
-                <div class="flex flex-col gap-[14px]">
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Up to 1 User
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    All UI components
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Lifetime access
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Free updates
-                  </p>
-                </div>
-              </div>
-              <a
-                href="javascript:void(0)"
-                class="inline-block py-3 text-base font-medium text-center text-white transition rounded-md bg-primary px-7 hover:bg-blue-dark"
-              >
-                Purchase Now
-              </a>
-            </div>
-          </div>
-          <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div
-              class="relative z-10 px-8 py-10 mb-10 overflow-hidden bg-white rounded-xl shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-14"
-            >
-              <span
-                class="block mb-5 text-xl font-medium text-dark dark:text-white"
-              >
-                Premium
-              </span>
-              <h2
-                class="mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]"
-              >
-                <span class="text-xl font-medium">$</span>
-                <span class="-ml-1 -tracking-[2px]">99.00</span>
-                <span
-                  class="text-base font-normal text-body-color dark:text-dark-6"
-                >
-                  Per Month
-                </span>
-              </h2>
-              <div class="mb-[50px]">
-                <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
-                  Features
-                </h5>
-                <div class="flex flex-col gap-[14px]">
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Up to 1 User
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    All UI components
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Lifetime access
-                  </p>
-                  <p class="text-base text-body-color dark:text-dark-6">
-                    Free updates
-                  </p>
-                </div>
-              </div>
-              <a
-                href="javascript:void(0)"
-                class="inline-block py-3 text-base font-medium text-center text-white transition rounded-md bg-primary px-7 hover:bg-blue-dark"
-              >
-                Purchase Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ====== Pricing Section End -->
-
     <!-- ====== Testimonial Section Start -->
     <section
       id="testimonials"
@@ -1916,11 +1737,10 @@
               <h2
                 class="mb-3 text-3xl font-bold leading-[1.2] text-dark dark:text-white sm:text-4xl md:text-[40px]"
               >
-                What our Clients Say
+                What others are Saying
               </h2>
               <p class="text-base text-body-color dark:text-dark-6">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                This is what the students and other stake holders are saying about the work we do!
               </p>
             </div>
           </div>
@@ -1929,331 +1749,57 @@
         <div class="-m-5">
           <div class="p-5 swiper testimonial-carousel common-carousel">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div
-                  class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
-                >
-                  <div class="mb-[18px] flex items-center gap-[2px]">
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                  </div>
+                @foreach ($testimonials as $testimonial)
+                    <div class="swiper-slide">
+                        <div class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]">
+                        <div class="mb-[18px] flex items-center gap-[2px]">
+                            <img
+                            src="./assets/images/testimonials/icon-star.svg"
+                            alt="star icon"
+                            />
+                            <img
+                            src="./assets/images/testimonials/icon-star.svg"
+                            alt="star icon"
+                            />
+                            <img
+                            src="./assets/images/testimonials/icon-star.svg"
+                            alt="star icon"
+                            />
+                            <img
+                            src="./assets/images/testimonials/icon-star.svg"
+                            alt="star icon"
+                            />
+                            <img
+                            src="./assets/images/testimonials/icon-star.svg"
+                            alt="star icon"
+                            />
+                        </div>
 
-                  <p class="mb-6 text-base text-body-color dark:text-dark-6">
-                    “Our members are so impressed. It's intuitive. It's clean.
-                    It's distraction free. If you're building a community.’’
-                  </p>
+                        <p class="mb-6 text-base text-body-color dark:text-dark-6">
+                            “{{$testimonial->content}}’’
+                        </p>
 
-                  <a href="#" class="flex items-center gap-4">
-                    <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
-                      <img
-                        src="./assets/images/testimonials/author-01.jpg"
-                        alt="author"
-                        class="h-[50px] w-[50px] overflow-hidden rounded-full"
-                      />
+                        <a href="#" class="flex items-center gap-4">
+                            <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
+                            <img
+                                src="{{ asset('storage/' . $testimonial->photo) }}"
+                                alt="author"
+                                class="h-[50px] w-[50px] overflow-hidden rounded-full"
+                            />
+                            </div>
+
+                            <div>
+                            <h3
+                                class="text-sm font-semibold text-dark dark:text-white"
+                            >
+                                {{ $testimonial->name }}
+                            </h3>
+                            <p class="text-xs text-body-secondary">{{ $testimonial->occupation }}</p>
+                            </div>
+                        </a>
+                        </div>
                     </div>
-
-                    <div>
-                      <h3
-                        class="text-sm font-semibold text-dark dark:text-white"
-                      >
-                        Sabo Masties
-                      </h3>
-                      <p class="text-xs text-body-secondary">Founder @ Rolex</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div
-                  class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
-                >
-                  <div class="mb-[18px] flex items-center gap-[2px]">
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                  </div>
-
-                  <p class="mb-6 text-base text-body-color dark:text-dark-6">
-                    “Our members are so impressed. It's intuitive. It's clean.
-                    It's distraction free. If you're building a community.’’
-                  </p>
-
-                  <a href="#" class="flex items-center gap-4">
-                    <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
-                      <img
-                        src="./assets/images/testimonials/author-02.jpg"
-                        alt="author"
-                        class="h-[50px] w-[50px] overflow-hidden rounded-full"
-                      />
-                    </div>
-
-                    <div>
-                      <h3
-                        class="text-sm font-semibold text-dark dark:text-white"
-                      >
-                        Musharof Chowdhury
-                      </h3>
-                      <p class="text-xs text-body-secondary">
-                        Founder @ Ayro UI
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div
-                  class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
-                >
-                  <div class="mb-[18px] flex items-center gap-[2px]">
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                  </div>
-
-                  <p class="mb-6 text-base text-body-color dark:text-dark-6">
-                    “Our members are so impressed. It's intuitive. It's clean.
-                    It's distraction free. If you're building a community.’’
-                  </p>
-
-                  <a href="#" class="flex items-center gap-4">
-                    <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
-                      <img
-                        src="./assets/images/testimonials/author-03.jpg"
-                        alt="author"
-                        class="h-[50px] w-[50px] overflow-hidden rounded-full"
-                      />
-                    </div>
-
-                    <div>
-                      <h3
-                        class="text-sm font-semibold text-dark dark:text-white"
-                      >
-                        William Smith
-                      </h3>
-                      <p class="text-xs text-body-secondary">
-                        Founder @ Trorex
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div
-                  class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
-                >
-                  <div class="mb-[18px] flex items-center gap-[2px]">
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                  </div>
-
-                  <p class="mb-6 text-base text-body-color dark:text-dark-6">
-                    “Our members are so impressed. It's intuitive. It's clean.
-                    It's distraction free. If you're building a community.’’
-                  </p>
-
-                  <a href="#" class="flex items-center gap-4">
-                    <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
-                      <img
-                        src="./assets/images/testimonials/author-01.jpg"
-                        alt="author"
-                        class="h-[50px] w-[50px] overflow-hidden rounded-full"
-                      />
-                    </div>
-
-                    <div>
-                      <h3
-                        class="text-sm font-semibold text-dark dark:text-white"
-                      >
-                        Sabo Masties
-                      </h3>
-                      <p class="text-xs text-body-secondary">Founder @ Rolex</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div
-                  class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
-                >
-                  <div class="mb-[18px] flex items-center gap-[2px]">
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                  </div>
-
-                  <p class="mb-6 text-base text-body-color dark:text-dark-6">
-                    “Our members are so impressed. It's intuitive. It's clean.
-                    It's distraction free. If you're building a community.’’
-                  </p>
-
-                  <a href="#" class="flex items-center gap-4">
-                    <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
-                      <img
-                        src="./assets/images/testimonials/author-02.jpg"
-                        alt="author"
-                        class="h-[50px] w-[50px] overflow-hidden rounded-full"
-                      />
-                    </div>
-
-                    <div>
-                      <h3
-                        class="text-sm font-semibold text-dark dark:text-white"
-                      >
-                        Musharof Chowdhury
-                      </h3>
-                      <p class="text-xs text-body-secondary">
-                        Founder @ Ayro UI
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div
-                  class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
-                >
-                  <div class="mb-[18px] flex items-center gap-[2px]">
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                    <img
-                      src="./assets/images/testimonials/icon-star.svg"
-                      alt="star icon"
-                    />
-                  </div>
-
-                  <p class="mb-6 text-base text-body-color dark:text-dark-6">
-                    “Our members are so impressed. It's intuitive. It's clean.
-                    It's distraction free. If you're building a community.’’
-                  </p>
-
-                  <a href="#" class="flex items-center gap-4">
-                    <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
-                      <img
-                        src="./assets/images/testimonials/author-03.jpg"
-                        alt="author"
-                        class="h-[50px] w-[50px] overflow-hidden rounded-full"
-                      />
-                    </div>
-
-                    <div>
-                      <h3
-                        class="text-sm font-semibold text-dark dark:text-white"
-                      >
-                        William Smith
-                      </h3>
-                      <p class="text-xs text-body-secondary">
-                        Founder @ Trorex
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
+                @endforeach
             </div>
 
             <div class="mt-[60px] flex items-center justify-center gap-1">
@@ -2312,14 +1858,15 @@
               <p
                 class="mx-auto max-w-[485px] text-base text-body-color dark:text-dark-6"
               >
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+               Check out some of our frequently asked questions below. dont hesitate to contact us if you dont find your answer below.Looking forward to hearing from you soon!
               </p>
             </div>
           </div>
         </div>
         <div class="flex flex-wrap -mx-4">
+            @foreach ($faqs as $faq)
           <div class="w-full px-4 lg:w-1/2">
+
             <div class="mb-12 flex lg:mb-[70px]">
               <div
                 class="mr-4 flex h-[50px] w-full max-w-[50px] items-center justify-center rounded-xl bg-primary text-white sm:mr-6 sm:h-[60px] sm:max-w-[60px]"
@@ -2345,124 +1892,17 @@
                 <h3
                   class="mb-6 text-xl font-semibold text-dark dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
                 >
-                  Is TailGrids Well-documented?
+                  {{ $faq->question }}
                 </h3>
                 <p class="text-base text-body-color dark:text-dark-6">
-                  It takes 2-3 weeks to get your first blog post ready. That
-                  includes the in-depth research & creation of your monthly
-                  content ui/ux strategy that we do writing your first blog
-                  post.
+                 {{$faq->answer}}
                 </p>
               </div>
             </div>
-            <div class="mb-12 flex lg:mb-[70px]">
-              <div
-                class="mr-4 flex h-[50px] w-full max-w-[50px] items-center justify-center rounded-xl bg-primary text-white sm:mr-6 sm:h-[60px] sm:max-w-[60px]"
-              >
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 34 34"
-                  class="fill-current"
-                >
-                  <path
-                    d="M17.0008 0.690674C7.96953 0.690674 0.691406 7.9688 0.691406 17C0.691406 26.0313 7.96953 33.3625 17.0008 33.3625C26.032 33.3625 33.3633 26.0313 33.3633 17C33.3633 7.9688 26.032 0.690674 17.0008 0.690674ZM17.0008 31.5032C9.03203 31.5032 2.55078 24.9688 2.55078 17C2.55078 9.0313 9.03203 2.55005 17.0008 2.55005C24.9695 2.55005 31.5039 9.0313 31.5039 17C31.5039 24.9688 24.9695 31.5032 17.0008 31.5032Z"
-                  />
-                  <path
-                    d="M17.9039 6.32194C16.3633 6.05631 14.8227 6.48131 13.707 7.43756C12.5383 8.39381 11.8477 9.82819 11.8477 11.3688C11.8477 11.9532 11.9539 12.5376 12.1664 13.0688C12.3258 13.5469 12.857 13.8126 13.3352 13.6532C13.8133 13.4938 14.0789 12.9626 13.9195 12.4844C13.8133 12.1126 13.707 11.7938 13.707 11.3688C13.707 10.4126 14.132 9.50944 14.8758 8.87194C15.6195 8.23444 16.5758 7.96881 17.5852 8.18131C18.9133 8.39381 19.9758 9.50944 20.1883 10.7844C20.4539 12.3251 19.657 13.8126 18.2227 14.3969C16.8945 14.9282 16.0445 16.2563 16.0445 17.7969V21.1969C16.0445 21.7282 16.4695 22.1532 17.0008 22.1532C17.532 22.1532 17.957 21.7282 17.957 21.1969V17.7969C17.957 17.0532 18.382 16.3626 18.9664 16.1501C21.1977 15.2469 22.4727 12.9094 22.0477 10.4657C21.6758 8.39381 19.9758 6.69381 17.9039 6.32194Z"
-                  />
-                  <path
-                    d="M17.0531 24.8625H16.8937C16.3625 24.8625 15.9375 25.2875 15.9375 25.8188C15.9375 26.35 16.3625 26.7751 16.8937 26.7751H17.0531C17.5844 26.7751 18.0094 26.35 18.0094 25.8188C18.0094 25.2875 17.5844 24.8625 17.0531 24.8625Z"
-                  />
-                </svg>
-              </div>
-              <div class="w-full">
-                <h3
-                  class="mb-6 text-xl font-semibold text-dark dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
-                >
-                  Is TailGrids Well-documented?
-                </h3>
-                <p class="text-base text-body-color dark:text-dark-6">
-                  It takes 2-3 weeks to get your first blog post ready. That
-                  includes the in-depth research & creation of your monthly
-                  content ui/ux strategy that we do writing your first blog
-                  post.
-                </p>
-              </div>
+
             </div>
-          </div>
-          <div class="w-full px-4 lg:w-1/2">
-            <div class="mb-12 flex lg:mb-[70px]">
-              <div
-                class="mr-4 flex h-[50px] w-full max-w-[50px] items-center justify-center rounded-xl bg-primary text-white sm:mr-6 sm:h-[60px] sm:max-w-[60px]"
-              >
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 34 34"
-                  class="fill-current"
-                >
-                  <path
-                    d="M17.0008 0.690674C7.96953 0.690674 0.691406 7.9688 0.691406 17C0.691406 26.0313 7.96953 33.3625 17.0008 33.3625C26.032 33.3625 33.3633 26.0313 33.3633 17C33.3633 7.9688 26.032 0.690674 17.0008 0.690674ZM17.0008 31.5032C9.03203 31.5032 2.55078 24.9688 2.55078 17C2.55078 9.0313 9.03203 2.55005 17.0008 2.55005C24.9695 2.55005 31.5039 9.0313 31.5039 17C31.5039 24.9688 24.9695 31.5032 17.0008 31.5032Z"
-                  />
-                  <path
-                    d="M17.9039 6.32194C16.3633 6.05631 14.8227 6.48131 13.707 7.43756C12.5383 8.39381 11.8477 9.82819 11.8477 11.3688C11.8477 11.9532 11.9539 12.5376 12.1664 13.0688C12.3258 13.5469 12.857 13.8126 13.3352 13.6532C13.8133 13.4938 14.0789 12.9626 13.9195 12.4844C13.8133 12.1126 13.707 11.7938 13.707 11.3688C13.707 10.4126 14.132 9.50944 14.8758 8.87194C15.6195 8.23444 16.5758 7.96881 17.5852 8.18131C18.9133 8.39381 19.9758 9.50944 20.1883 10.7844C20.4539 12.3251 19.657 13.8126 18.2227 14.3969C16.8945 14.9282 16.0445 16.2563 16.0445 17.7969V21.1969C16.0445 21.7282 16.4695 22.1532 17.0008 22.1532C17.532 22.1532 17.957 21.7282 17.957 21.1969V17.7969C17.957 17.0532 18.382 16.3626 18.9664 16.1501C21.1977 15.2469 22.4727 12.9094 22.0477 10.4657C21.6758 8.39381 19.9758 6.69381 17.9039 6.32194Z"
-                  />
-                  <path
-                    d="M17.0531 24.8625H16.8937C16.3625 24.8625 15.9375 25.2875 15.9375 25.8188C15.9375 26.35 16.3625 26.7751 16.8937 26.7751H17.0531C17.5844 26.7751 18.0094 26.35 18.0094 25.8188C18.0094 25.2875 17.5844 24.8625 17.0531 24.8625Z"
-                  />
-                </svg>
-              </div>
-              <div class="w-full">
-                <h3
-                  class="mb-6 text-xl font-semibold text-dark dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
-                >
-                  Is TailGrids Well-documented?
-                </h3>
-                <p class="text-base text-body-color dark:text-dark-6">
-                  It takes 2-3 weeks to get your first blog post ready. That
-                  includes the in-depth research & creation of your monthly
-                  content ui/ux strategy that we do writing your first blog
-                  post.
-                </p>
-              </div>
-            </div>
-            <div class="mb-12 flex lg:mb-[70px]">
-              <div
-                class="mr-4 flex h-[50px] w-full max-w-[50px] items-center justify-center rounded-xl bg-primary text-white sm:mr-6 sm:h-[60px] sm:max-w-[60px]"
-              >
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 34 34"
-                  class="fill-current"
-                >
-                  <path
-                    d="M17.0008 0.690674C7.96953 0.690674 0.691406 7.9688 0.691406 17C0.691406 26.0313 7.96953 33.3625 17.0008 33.3625C26.032 33.3625 33.3633 26.0313 33.3633 17C33.3633 7.9688 26.032 0.690674 17.0008 0.690674ZM17.0008 31.5032C9.03203 31.5032 2.55078 24.9688 2.55078 17C2.55078 9.0313 9.03203 2.55005 17.0008 2.55005C24.9695 2.55005 31.5039 9.0313 31.5039 17C31.5039 24.9688 24.9695 31.5032 17.0008 31.5032Z"
-                  />
-                  <path
-                    d="M17.9039 6.32194C16.3633 6.05631 14.8227 6.48131 13.707 7.43756C12.5383 8.39381 11.8477 9.82819 11.8477 11.3688C11.8477 11.9532 11.9539 12.5376 12.1664 13.0688C12.3258 13.5469 12.857 13.8126 13.3352 13.6532C13.8133 13.4938 14.0789 12.9626 13.9195 12.4844C13.8133 12.1126 13.707 11.7938 13.707 11.3688C13.707 10.4126 14.132 9.50944 14.8758 8.87194C15.6195 8.23444 16.5758 7.96881 17.5852 8.18131C18.9133 8.39381 19.9758 9.50944 20.1883 10.7844C20.4539 12.3251 19.657 13.8126 18.2227 14.3969C16.8945 14.9282 16.0445 16.2563 16.0445 17.7969V21.1969C16.0445 21.7282 16.4695 22.1532 17.0008 22.1532C17.532 22.1532 17.957 21.7282 17.957 21.1969V17.7969C17.957 17.0532 18.382 16.3626 18.9664 16.1501C21.1977 15.2469 22.4727 12.9094 22.0477 10.4657C21.6758 8.39381 19.9758 6.69381 17.9039 6.32194Z"
-                  />
-                  <path
-                    d="M17.0531 24.8625H16.8937C16.3625 24.8625 15.9375 25.2875 15.9375 25.8188C15.9375 26.35 16.3625 26.7751 16.8937 26.7751H17.0531C17.5844 26.7751 18.0094 26.35 18.0094 25.8188C18.0094 25.2875 17.5844 24.8625 17.0531 24.8625Z"
-                  />
-                </svg>
-              </div>
-              <div class="w-full">
-                <h3
-                  class="mb-6 text-xl font-semibold text-dark dark:text-white sm:text-2xl lg:text-xl xl:text-2xl"
-                >
-                  Is TailGrids Well-documented?
-                </h3>
-                <p class="text-base text-body-color dark:text-dark-6">
-                  It takes 2-3 weeks to get your first blog post ready. That
-                  includes the in-depth research & creation of your monthly
-                  content ui/ux strategy that we do writing your first blog
-                  post.
-                </p>
-              </div>
-            </div>
-          </div>
+        @endforeach
+
         </div>
       </div>
       <div>
@@ -3386,618 +2826,7 @@
               </div>
             </div>
           </div>
-          <div class="w-full px-4 sm:w-1/2 lg:w-1/4 xl:w-1/4">
-            <div
-              class="px-5 pt-12 pb-10 mb-8 bg-white group rounded-xl shadow-testimonial dark:bg-dark dark:shadow-none"
-            >
-              <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
-                <img
-                  src="assets/images/team/IT.jpg"
-                  alt="team image"
-                  class="h-[120px] w-[120px] rounded-full"
-                />
-                <span
-                  class="absolute bottom-0 left-0 w-10 h-10 transition-all rounded-full opacity-0 -z-10 bg-secondary group-hover:opacity-100"
-                ></span>
-                <span
-                  class="absolute top-0 right-0 transition-all opacity-0 -z-10 group-hover:opacity-100"
-                >
-                  <svg
-                    width="45"
-                    height="53"
-                    viewBox="0 0 45 53"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M2.54166 3.1009C3.39795 3.1009 4.09211 2.40674 4.09211 1.55045C4.09211 0.69416 3.39795 0 2.54166 0C1.68537 0 0.991211 0.69416 0.991211 1.55045C0.991211 2.40674 1.68537 3.1009 2.54166 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.5338 3.1009C13.3901 3.1009 14.0843 2.40674 14.0843 1.55045C14.0843 0.69416 13.3901 0 12.5338 0C11.6776 0 10.9834 0.69416 10.9834 1.55045C10.9834 2.40674 11.6776 3.1009 12.5338 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 3.1009C23.3823 3.1009 24.0765 2.40674 24.0765 1.55045C24.0765 0.69416 23.3823 0 22.526 0C21.6697 0 20.9756 0.69416 20.9756 1.55045C20.9756 2.40674 21.6697 3.1009 22.526 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 3.1009C33.374 3.1009 34.0682 2.40674 34.0682 1.55045C34.0682 0.69416 33.374 0 32.5177 0C31.6614 0 30.9673 0.69416 30.9673 1.55045C30.9673 2.40674 31.6614 3.1009 32.5177 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 3.1009C43.3657 3.1009 44.0599 2.40674 44.0599 1.55045C44.0599 0.69416 43.3657 0 42.5094 0C41.6531 0 40.959 0.69416 40.959 1.55045C40.959 2.40674 41.6531 3.1009 42.5094 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.5338 13.0804C13.3901 13.0804 14.0843 12.3862 14.0843 11.5299C14.0843 10.6737 13.3901 9.97949 12.5338 9.97949C11.6776 9.97949 10.9834 10.6737 10.9834 11.5299C10.9834 12.3862 11.6776 13.0804 12.5338 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 13.0804C23.3823 13.0804 24.0765 12.3862 24.0765 11.5299C24.0765 10.6737 23.3823 9.97949 22.526 9.97949C21.6697 9.97949 20.9756 10.6737 20.9756 11.5299C20.9756 12.3862 21.6697 13.0804 22.526 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 13.0804C33.374 13.0804 34.0682 12.3862 34.0682 11.5299C34.0682 10.6737 33.374 9.97949 32.5177 9.97949C31.6614 9.97949 30.9673 10.6737 30.9673 11.5299C30.9673 12.3862 31.6614 13.0804 32.5177 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 13.0804C43.3657 13.0804 44.0599 12.3862 44.0599 11.5299C44.0599 10.6737 43.3657 9.97949 42.5094 9.97949C41.6531 9.97949 40.959 10.6737 40.959 11.5299C40.959 12.3862 41.6531 13.0804 42.5094 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 23.0604C23.3823 23.0604 24.0765 22.3662 24.0765 21.5099C24.0765 20.6536 23.3823 19.9595 22.526 19.9595C21.6697 19.9595 20.9756 20.6536 20.9756 21.5099C20.9756 22.3662 21.6697 23.0604 22.526 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 23.0604C33.374 23.0604 34.0682 22.3662 34.0682 21.5099C34.0682 20.6536 33.374 19.9595 32.5177 19.9595C31.6614 19.9595 30.9673 20.6536 30.9673 21.5099C30.9673 22.3662 31.6614 23.0604 32.5177 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 23.0604C43.3657 23.0604 44.0599 22.3662 44.0599 21.5099C44.0599 20.6536 43.3657 19.9595 42.5094 19.9595C41.6531 19.9595 40.959 20.6536 40.959 21.5099C40.959 22.3662 41.6531 23.0604 42.5094 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 33.0404C33.374 33.0404 34.0682 32.3462 34.0682 31.4899C34.0682 30.6336 33.374 29.9395 32.5177 29.9395C31.6614 29.9395 30.9673 30.6336 30.9673 31.4899C30.9673 32.3462 31.6614 33.0404 32.5177 33.0404Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 33.0404C43.3657 33.0404 44.0599 32.3462 44.0599 31.4899C44.0599 30.6336 43.3657 29.9395 42.5094 29.9395C41.6531 29.9395 40.959 30.6336 40.959 31.4899C40.959 32.3462 41.6531 33.0404 42.5094 33.0404Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 43.0203C33.374 43.0203 34.0682 42.3262 34.0682 41.4699C34.0682 40.6136 33.374 39.9194 32.5177 39.9194C31.6614 39.9194 30.9673 40.6136 30.9673 41.4699C30.9673 42.3262 31.6614 43.0203 32.5177 43.0203Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 43.0203C43.3657 43.0203 44.0599 42.3262 44.0599 41.4699C44.0599 40.6136 43.3657 39.9194 42.5094 39.9194C41.6531 39.9194 40.959 40.6136 40.959 41.4699C40.959 42.3262 41.6531 43.0203 42.5094 43.0203Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 52.9998C43.3657 52.9998 44.0599 52.3057 44.0599 51.4494C44.0599 50.5931 43.3657 49.8989 42.5094 49.8989C41.6531 49.8989 40.959 50.5931 40.959 51.4494C40.959 52.3057 41.6531 52.9998 42.5094 52.9998Z"
-                      fill="#3056D3"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <div class="text-center">
-                <h4
-                  class="mb-1 text-lg font-semibold text-dark dark:text-white"
-                >
-                  Mr Nelson Mathebeng
-                </h4>
-                <p class="mb-5 text-sm text-body-color dark:text-dark-6">
-                  IT Department
-                </p>
-                <div class="flex items-center justify-center gap-5">
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M13.3315 7.25625H11.7565H11.194V6.69375V4.95V4.3875H11.7565H12.9377C13.2471 4.3875 13.5002 4.1625 13.5002 3.825V0.84375C13.5002 0.534375 13.2752 0.28125 12.9377 0.28125H10.8846C8.66272 0.28125 7.11584 1.85625 7.11584 4.19062V6.6375V7.2H6.55334H4.64084C4.24709 7.2 3.88147 7.50937 3.88147 7.95937V9.98438C3.88147 10.3781 4.19084 10.7438 4.64084 10.7438H6.49709H7.05959V11.3063V16.9594C7.05959 17.3531 7.36897 17.7188 7.81897 17.7188H10.4627C10.6315 17.7188 10.7721 17.6344 10.8846 17.5219C10.9971 17.4094 11.0815 17.2125 11.0815 17.0437V11.3344V10.7719H11.6721H12.9377C13.3033 10.7719 13.5846 10.5469 13.6408 10.2094V10.1813V10.1531L14.0346 8.2125C14.0627 8.01562 14.0346 7.79063 13.8658 7.56562C13.8096 7.425 13.5565 7.28437 13.3315 7.25625Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M16.4647 4.83752C16.565 4.72065 16.4343 4.56793 16.2859 4.62263C15.9549 4.74474 15.6523 4.82528 15.2049 4.875C15.7552 4.56855 16.0112 4.13054 16.2194 3.59407C16.2696 3.46467 16.1182 3.34725 15.9877 3.40907C15.458 3.66023 14.8864 3.84658 14.2854 3.95668C13.6913 3.3679 12.8445 3 11.9077 3C10.1089 3 8.65027 4.35658 8.65027 6.02938C8.65027 6.26686 8.67937 6.49818 8.73427 6.71966C6.14854 6.59919 3.84286 5.49307 2.24098 3.79696C2.13119 3.68071 1.93197 3.69614 1.86361 3.83792C1.68124 4.21619 1.57957 4.63582 1.57957 5.07762C1.57957 6.12843 2.15446 7.05557 3.02837 7.59885C2.63653 7.58707 2.2618 7.51073 1.91647 7.38116C1.74834 7.31808 1.5556 7.42893 1.57819 7.59847C1.75162 8.9004 2.80568 9.97447 4.16624 10.2283C3.89302 10.2978 3.60524 10.3347 3.30754 10.3347C3.23536 10.3347 3.16381 10.3324 3.0929 10.3281C2.91247 10.3169 2.76583 10.4783 2.84319 10.6328C3.35357 11.6514 4.45563 12.3625 5.73809 12.3847C4.62337 13.1974 3.21889 13.6816 1.69269 13.6816C1.50451 13.6816 1.42378 13.9235 1.59073 14.0056C2.88015 14.6394 4.34854 15 5.90878 15C11.9005 15 15.1765 10.384 15.1765 6.38067C15.1765 6.24963 15.1732 6.11858 15.1672 5.98877C15.6535 5.66205 16.0907 5.27354 16.4647 4.83752Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M9.02429 11.8066C10.5742 11.8066 11.8307 10.5501 11.8307 9.00018C11.8307 7.45022 10.5742 6.19373 9.02429 6.19373C7.47433 6.19373 6.21783 7.45022 6.21783 9.00018C6.21783 10.5501 7.47433 11.8066 9.02429 11.8066Z"
-                        fill=""
-                      />
-                      <path
-                        d="M12.0726 1.5H5.92742C3.48387 1.5 1.5 3.48387 1.5 5.92742V12.0242C1.5 14.5161 3.48387 16.5 5.92742 16.5H12.0242C14.5161 16.5 16.5 14.5161 16.5 12.0726V5.92742C16.5 3.48387 14.5161 1.5 12.0726 1.5ZM9.02419 12.6774C6.96774 12.6774 5.34677 11.0081 5.34677 9C5.34677 6.99194 6.99194 5.32258 9.02419 5.32258C11.0323 5.32258 12.6774 6.99194 12.6774 9C12.6774 11.0081 11.0565 12.6774 9.02419 12.6774ZM14.1048 5.66129C13.8629 5.92742 13.5 6.07258 13.0887 6.07258C12.7258 6.07258 12.3629 5.92742 12.0726 5.66129C11.8065 5.39516 11.6613 5.05645 11.6613 4.64516C11.6613 4.23387 11.8065 3.91935 12.0726 3.62903C12.3387 3.33871 12.6774 3.19355 13.0887 3.19355C13.4516 3.19355 13.8387 3.33871 14.1048 3.60484C14.3468 3.91935 14.5161 4.28226 14.5161 4.66935C14.4919 5.05645 14.3468 5.39516 14.1048 5.66129Z"
-                        fill=""
-                      />
-                      <path
-                        d="M13.1135 4.06433C12.799 4.06433 12.5329 4.33046 12.5329 4.64498C12.5329 4.95949 12.799 5.22562 13.1135 5.22562C13.428 5.22562 13.6942 4.95949 13.6942 4.64498C13.6942 4.33046 13.4522 4.06433 13.1135 4.06433Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="w-full px-4 sm:w-1/2 lg:w-1/4 xl:w-1/4">
-            <div
-              class="px-5 pt-12 pb-10 mb-8 bg-white group rounded-xl shadow-testimonial dark:bg-dark dark:shadow-none"
-            >
-              <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
-                <img
-                  src="https://cdn.tailgrids.com/1.0/assets/images/team/image-07/image-03.png"
-                  alt="team image"
-                  class="h-[120px] w-[120px] rounded-full"
-                />
-                <span
-                  class="absolute bottom-0 left-0 w-10 h-10 transition-all rounded-full opacity-0 -z-10 bg-secondary group-hover:opacity-100"
-                ></span>
-                <span
-                  class="absolute top-0 right-0 transition-all opacity-0 -z-10 group-hover:opacity-100"
-                >
-                  <svg
-                    width="45"
-                    height="53"
-                    viewBox="0 0 45 53"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M2.54166 3.1009C3.39795 3.1009 4.09211 2.40674 4.09211 1.55045C4.09211 0.69416 3.39795 0 2.54166 0C1.68537 0 0.991211 0.69416 0.991211 1.55045C0.991211 2.40674 1.68537 3.1009 2.54166 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.5338 3.1009C13.3901 3.1009 14.0843 2.40674 14.0843 1.55045C14.0843 0.69416 13.3901 0 12.5338 0C11.6776 0 10.9834 0.69416 10.9834 1.55045C10.9834 2.40674 11.6776 3.1009 12.5338 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 3.1009C23.3823 3.1009 24.0765 2.40674 24.0765 1.55045C24.0765 0.69416 23.3823 0 22.526 0C21.6697 0 20.9756 0.69416 20.9756 1.55045C20.9756 2.40674 21.6697 3.1009 22.526 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 3.1009C33.374 3.1009 34.0682 2.40674 34.0682 1.55045C34.0682 0.69416 33.374 0 32.5177 0C31.6614 0 30.9673 0.69416 30.9673 1.55045C30.9673 2.40674 31.6614 3.1009 32.5177 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 3.1009C43.3657 3.1009 44.0599 2.40674 44.0599 1.55045C44.0599 0.69416 43.3657 0 42.5094 0C41.6531 0 40.959 0.69416 40.959 1.55045C40.959 2.40674 41.6531 3.1009 42.5094 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.5338 13.0804C13.3901 13.0804 14.0843 12.3862 14.0843 11.5299C14.0843 10.6737 13.3901 9.97949 12.5338 9.97949C11.6776 9.97949 10.9834 10.6737 10.9834 11.5299C10.9834 12.3862 11.6776 13.0804 12.5338 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 13.0804C23.3823 13.0804 24.0765 12.3862 24.0765 11.5299C24.0765 10.6737 23.3823 9.97949 22.526 9.97949C21.6697 9.97949 20.9756 10.6737 20.9756 11.5299C20.9756 12.3862 21.6697 13.0804 22.526 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 13.0804C33.374 13.0804 34.0682 12.3862 34.0682 11.5299C34.0682 10.6737 33.374 9.97949 32.5177 9.97949C31.6614 9.97949 30.9673 10.6737 30.9673 11.5299C30.9673 12.3862 31.6614 13.0804 32.5177 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 13.0804C43.3657 13.0804 44.0599 12.3862 44.0599 11.5299C44.0599 10.6737 43.3657 9.97949 42.5094 9.97949C41.6531 9.97949 40.959 10.6737 40.959 11.5299C40.959 12.3862 41.6531 13.0804 42.5094 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 23.0604C23.3823 23.0604 24.0765 22.3662 24.0765 21.5099C24.0765 20.6536 23.3823 19.9595 22.526 19.9595C21.6697 19.9595 20.9756 20.6536 20.9756 21.5099C20.9756 22.3662 21.6697 23.0604 22.526 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 23.0604C33.374 23.0604 34.0682 22.3662 34.0682 21.5099C34.0682 20.6536 33.374 19.9595 32.5177 19.9595C31.6614 19.9595 30.9673 20.6536 30.9673 21.5099C30.9673 22.3662 31.6614 23.0604 32.5177 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 23.0604C43.3657 23.0604 44.0599 22.3662 44.0599 21.5099C44.0599 20.6536 43.3657 19.9595 42.5094 19.9595C41.6531 19.9595 40.959 20.6536 40.959 21.5099C40.959 22.3662 41.6531 23.0604 42.5094 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 33.0404C33.374 33.0404 34.0682 32.3462 34.0682 31.4899C34.0682 30.6336 33.374 29.9395 32.5177 29.9395C31.6614 29.9395 30.9673 30.6336 30.9673 31.4899C30.9673 32.3462 31.6614 33.0404 32.5177 33.0404Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 33.0404C43.3657 33.0404 44.0599 32.3462 44.0599 31.4899C44.0599 30.6336 43.3657 29.9395 42.5094 29.9395C41.6531 29.9395 40.959 30.6336 40.959 31.4899C40.959 32.3462 41.6531 33.0404 42.5094 33.0404Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 43.0203C33.374 43.0203 34.0682 42.3262 34.0682 41.4699C34.0682 40.6136 33.374 39.9194 32.5177 39.9194C31.6614 39.9194 30.9673 40.6136 30.9673 41.4699C30.9673 42.3262 31.6614 43.0203 32.5177 43.0203Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 43.0203C43.3657 43.0203 44.0599 42.3262 44.0599 41.4699C44.0599 40.6136 43.3657 39.9194 42.5094 39.9194C41.6531 39.9194 40.959 40.6136 40.959 41.4699C40.959 42.3262 41.6531 43.0203 42.5094 43.0203Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 52.9998C43.3657 52.9998 44.0599 52.3057 44.0599 51.4494C44.0599 50.5931 43.3657 49.8989 42.5094 49.8989C41.6531 49.8989 40.959 50.5931 40.959 51.4494C40.959 52.3057 41.6531 52.9998 42.5094 52.9998Z"
-                      fill="#3056D3"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <div class="text-center">
-                <h4
-                  class="mb-1 text-lg font-semibold text-dark dark:text-white"
-                >
-                  Eva Hudson
-                </h4>
-                <p class="mb-5 text-sm text-body-color dark:text-dark-6">
-                  Creative Designer
-                </p>
-                <div class="flex items-center justify-center gap-5">
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M13.3315 7.25625H11.7565H11.194V6.69375V4.95V4.3875H11.7565H12.9377C13.2471 4.3875 13.5002 4.1625 13.5002 3.825V0.84375C13.5002 0.534375 13.2752 0.28125 12.9377 0.28125H10.8846C8.66272 0.28125 7.11584 1.85625 7.11584 4.19062V6.6375V7.2H6.55334H4.64084C4.24709 7.2 3.88147 7.50937 3.88147 7.95937V9.98438C3.88147 10.3781 4.19084 10.7438 4.64084 10.7438H6.49709H7.05959V11.3063V16.9594C7.05959 17.3531 7.36897 17.7188 7.81897 17.7188H10.4627C10.6315 17.7188 10.7721 17.6344 10.8846 17.5219C10.9971 17.4094 11.0815 17.2125 11.0815 17.0437V11.3344V10.7719H11.6721H12.9377C13.3033 10.7719 13.5846 10.5469 13.6408 10.2094V10.1813V10.1531L14.0346 8.2125C14.0627 8.01562 14.0346 7.79063 13.8658 7.56562C13.8096 7.425 13.5565 7.28437 13.3315 7.25625Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M16.4647 4.83752C16.565 4.72065 16.4343 4.56793 16.2859 4.62263C15.9549 4.74474 15.6523 4.82528 15.2049 4.875C15.7552 4.56855 16.0112 4.13054 16.2194 3.59407C16.2696 3.46467 16.1182 3.34725 15.9877 3.40907C15.458 3.66023 14.8864 3.84658 14.2854 3.95668C13.6913 3.3679 12.8445 3 11.9077 3C10.1089 3 8.65027 4.35658 8.65027 6.02938C8.65027 6.26686 8.67937 6.49818 8.73427 6.71966C6.14854 6.59919 3.84286 5.49307 2.24098 3.79696C2.13119 3.68071 1.93197 3.69614 1.86361 3.83792C1.68124 4.21619 1.57957 4.63582 1.57957 5.07762C1.57957 6.12843 2.15446 7.05557 3.02837 7.59885C2.63653 7.58707 2.2618 7.51073 1.91647 7.38116C1.74834 7.31808 1.5556 7.42893 1.57819 7.59847C1.75162 8.9004 2.80568 9.97447 4.16624 10.2283C3.89302 10.2978 3.60524 10.3347 3.30754 10.3347C3.23536 10.3347 3.16381 10.3324 3.0929 10.3281C2.91247 10.3169 2.76583 10.4783 2.84319 10.6328C3.35357 11.6514 4.45563 12.3625 5.73809 12.3847C4.62337 13.1974 3.21889 13.6816 1.69269 13.6816C1.50451 13.6816 1.42378 13.9235 1.59073 14.0056C2.88015 14.6394 4.34854 15 5.90878 15C11.9005 15 15.1765 10.384 15.1765 6.38067C15.1765 6.24963 15.1732 6.11858 15.1672 5.98877C15.6535 5.66205 16.0907 5.27354 16.4647 4.83752Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M9.02429 11.8066C10.5742 11.8066 11.8307 10.5501 11.8307 9.00018C11.8307 7.45022 10.5742 6.19373 9.02429 6.19373C7.47433 6.19373 6.21783 7.45022 6.21783 9.00018C6.21783 10.5501 7.47433 11.8066 9.02429 11.8066Z"
-                        fill=""
-                      />
-                      <path
-                        d="M12.0726 1.5H5.92742C3.48387 1.5 1.5 3.48387 1.5 5.92742V12.0242C1.5 14.5161 3.48387 16.5 5.92742 16.5H12.0242C14.5161 16.5 16.5 14.5161 16.5 12.0726V5.92742C16.5 3.48387 14.5161 1.5 12.0726 1.5ZM9.02419 12.6774C6.96774 12.6774 5.34677 11.0081 5.34677 9C5.34677 6.99194 6.99194 5.32258 9.02419 5.32258C11.0323 5.32258 12.6774 6.99194 12.6774 9C12.6774 11.0081 11.0565 12.6774 9.02419 12.6774ZM14.1048 5.66129C13.8629 5.92742 13.5 6.07258 13.0887 6.07258C12.7258 6.07258 12.3629 5.92742 12.0726 5.66129C11.8065 5.39516 11.6613 5.05645 11.6613 4.64516C11.6613 4.23387 11.8065 3.91935 12.0726 3.62903C12.3387 3.33871 12.6774 3.19355 13.0887 3.19355C13.4516 3.19355 13.8387 3.33871 14.1048 3.60484C14.3468 3.91935 14.5161 4.28226 14.5161 4.66935C14.4919 5.05645 14.3468 5.39516 14.1048 5.66129Z"
-                        fill=""
-                      />
-                      <path
-                        d="M13.1135 4.06433C12.799 4.06433 12.5329 4.33046 12.5329 4.64498C12.5329 4.95949 12.799 5.22562 13.1135 5.22562C13.428 5.22562 13.6942 4.95949 13.6942 4.64498C13.6942 4.33046 13.4522 4.06433 13.1135 4.06433Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="w-full px-4 sm:w-1/2 lg:w-1/4 xl:w-1/4">
-            <div
-              class="px-5 pt-12 pb-10 mb-8 bg-white group rounded-xl shadow-testimonial dark:bg-dark dark:shadow-none"
-            >
-              <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
-                <img
-                  src="https://cdn.tailgrids.com/1.0/assets/images/team/image-07/image-04.png"
-                  alt="team image"
-                  class="h-[120px] w-[120px] rounded-full"
-                />
-                <span
-                  class="absolute bottom-0 left-0 w-10 h-10 transition-all rounded-full opacity-0 -z-10 bg-secondary group-hover:opacity-100"
-                ></span>
-                <span
-                  class="absolute top-0 right-0 transition-all opacity-0 -z-10 group-hover:opacity-100"
-                >
-                  <svg
-                    width="45"
-                    height="53"
-                    viewBox="0 0 45 53"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M2.54166 3.1009C3.39795 3.1009 4.09211 2.40674 4.09211 1.55045C4.09211 0.69416 3.39795 0 2.54166 0C1.68537 0 0.991211 0.69416 0.991211 1.55045C0.991211 2.40674 1.68537 3.1009 2.54166 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.5338 3.1009C13.3901 3.1009 14.0843 2.40674 14.0843 1.55045C14.0843 0.69416 13.3901 0 12.5338 0C11.6776 0 10.9834 0.69416 10.9834 1.55045C10.9834 2.40674 11.6776 3.1009 12.5338 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 3.1009C23.3823 3.1009 24.0765 2.40674 24.0765 1.55045C24.0765 0.69416 23.3823 0 22.526 0C21.6697 0 20.9756 0.69416 20.9756 1.55045C20.9756 2.40674 21.6697 3.1009 22.526 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 3.1009C33.374 3.1009 34.0682 2.40674 34.0682 1.55045C34.0682 0.69416 33.374 0 32.5177 0C31.6614 0 30.9673 0.69416 30.9673 1.55045C30.9673 2.40674 31.6614 3.1009 32.5177 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 3.1009C43.3657 3.1009 44.0599 2.40674 44.0599 1.55045C44.0599 0.69416 43.3657 0 42.5094 0C41.6531 0 40.959 0.69416 40.959 1.55045C40.959 2.40674 41.6531 3.1009 42.5094 3.1009Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.5338 13.0804C13.3901 13.0804 14.0843 12.3862 14.0843 11.5299C14.0843 10.6737 13.3901 9.97949 12.5338 9.97949C11.6776 9.97949 10.9834 10.6737 10.9834 11.5299C10.9834 12.3862 11.6776 13.0804 12.5338 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 13.0804C23.3823 13.0804 24.0765 12.3862 24.0765 11.5299C24.0765 10.6737 23.3823 9.97949 22.526 9.97949C21.6697 9.97949 20.9756 10.6737 20.9756 11.5299C20.9756 12.3862 21.6697 13.0804 22.526 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 13.0804C33.374 13.0804 34.0682 12.3862 34.0682 11.5299C34.0682 10.6737 33.374 9.97949 32.5177 9.97949C31.6614 9.97949 30.9673 10.6737 30.9673 11.5299C30.9673 12.3862 31.6614 13.0804 32.5177 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 13.0804C43.3657 13.0804 44.0599 12.3862 44.0599 11.5299C44.0599 10.6737 43.3657 9.97949 42.5094 9.97949C41.6531 9.97949 40.959 10.6737 40.959 11.5299C40.959 12.3862 41.6531 13.0804 42.5094 13.0804Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M22.526 23.0604C23.3823 23.0604 24.0765 22.3662 24.0765 21.5099C24.0765 20.6536 23.3823 19.9595 22.526 19.9595C21.6697 19.9595 20.9756 20.6536 20.9756 21.5099C20.9756 22.3662 21.6697 23.0604 22.526 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 23.0604C33.374 23.0604 34.0682 22.3662 34.0682 21.5099C34.0682 20.6536 33.374 19.9595 32.5177 19.9595C31.6614 19.9595 30.9673 20.6536 30.9673 21.5099C30.9673 22.3662 31.6614 23.0604 32.5177 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 23.0604C43.3657 23.0604 44.0599 22.3662 44.0599 21.5099C44.0599 20.6536 43.3657 19.9595 42.5094 19.9595C41.6531 19.9595 40.959 20.6536 40.959 21.5099C40.959 22.3662 41.6531 23.0604 42.5094 23.0604Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 33.0404C33.374 33.0404 34.0682 32.3462 34.0682 31.4899C34.0682 30.6336 33.374 29.9395 32.5177 29.9395C31.6614 29.9395 30.9673 30.6336 30.9673 31.4899C30.9673 32.3462 31.6614 33.0404 32.5177 33.0404Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 33.0404C43.3657 33.0404 44.0599 32.3462 44.0599 31.4899C44.0599 30.6336 43.3657 29.9395 42.5094 29.9395C41.6531 29.9395 40.959 30.6336 40.959 31.4899C40.959 32.3462 41.6531 33.0404 42.5094 33.0404Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M32.5177 43.0203C33.374 43.0203 34.0682 42.3262 34.0682 41.4699C34.0682 40.6136 33.374 39.9194 32.5177 39.9194C31.6614 39.9194 30.9673 40.6136 30.9673 41.4699C30.9673 42.3262 31.6614 43.0203 32.5177 43.0203Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 43.0203C43.3657 43.0203 44.0599 42.3262 44.0599 41.4699C44.0599 40.6136 43.3657 39.9194 42.5094 39.9194C41.6531 39.9194 40.959 40.6136 40.959 41.4699C40.959 42.3262 41.6531 43.0203 42.5094 43.0203Z"
-                      fill="#3056D3"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M42.5094 52.9998C43.3657 52.9998 44.0599 52.3057 44.0599 51.4494C44.0599 50.5931 43.3657 49.8989 42.5094 49.8989C41.6531 49.8989 40.959 50.5931 40.959 51.4494C40.959 52.3057 41.6531 52.9998 42.5094 52.9998Z"
-                      fill="#3056D3"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <div class="text-center">
-                <h4
-                  class="mb-1 text-lg font-semibold text-dark dark:text-white"
-                >
-                  Jackie Sanders
-                </h4>
-                <p class="mb-5 text-sm text-body-color dark:text-dark-6">
-                  SEO Expert
-                </p>
-                <div class="flex items-center justify-center gap-5">
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M13.3315 7.25625H11.7565H11.194V6.69375V4.95V4.3875H11.7565H12.9377C13.2471 4.3875 13.5002 4.1625 13.5002 3.825V0.84375C13.5002 0.534375 13.2752 0.28125 12.9377 0.28125H10.8846C8.66272 0.28125 7.11584 1.85625 7.11584 4.19062V6.6375V7.2H6.55334H4.64084C4.24709 7.2 3.88147 7.50937 3.88147 7.95937V9.98438C3.88147 10.3781 4.19084 10.7438 4.64084 10.7438H6.49709H7.05959V11.3063V16.9594C7.05959 17.3531 7.36897 17.7188 7.81897 17.7188H10.4627C10.6315 17.7188 10.7721 17.6344 10.8846 17.5219C10.9971 17.4094 11.0815 17.2125 11.0815 17.0437V11.3344V10.7719H11.6721H12.9377C13.3033 10.7719 13.5846 10.5469 13.6408 10.2094V10.1813V10.1531L14.0346 8.2125C14.0627 8.01562 14.0346 7.79063 13.8658 7.56562C13.8096 7.425 13.5565 7.28437 13.3315 7.25625Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M16.4647 4.83752C16.565 4.72065 16.4343 4.56793 16.2859 4.62263C15.9549 4.74474 15.6523 4.82528 15.2049 4.875C15.7552 4.56855 16.0112 4.13054 16.2194 3.59407C16.2696 3.46467 16.1182 3.34725 15.9877 3.40907C15.458 3.66023 14.8864 3.84658 14.2854 3.95668C13.6913 3.3679 12.8445 3 11.9077 3C10.1089 3 8.65027 4.35658 8.65027 6.02938C8.65027 6.26686 8.67937 6.49818 8.73427 6.71966C6.14854 6.59919 3.84286 5.49307 2.24098 3.79696C2.13119 3.68071 1.93197 3.69614 1.86361 3.83792C1.68124 4.21619 1.57957 4.63582 1.57957 5.07762C1.57957 6.12843 2.15446 7.05557 3.02837 7.59885C2.63653 7.58707 2.2618 7.51073 1.91647 7.38116C1.74834 7.31808 1.5556 7.42893 1.57819 7.59847C1.75162 8.9004 2.80568 9.97447 4.16624 10.2283C3.89302 10.2978 3.60524 10.3347 3.30754 10.3347C3.23536 10.3347 3.16381 10.3324 3.0929 10.3281C2.91247 10.3169 2.76583 10.4783 2.84319 10.6328C3.35357 11.6514 4.45563 12.3625 5.73809 12.3847C4.62337 13.1974 3.21889 13.6816 1.69269 13.6816C1.50451 13.6816 1.42378 13.9235 1.59073 14.0056C2.88015 14.6394 4.34854 15 5.90878 15C11.9005 15 15.1765 10.384 15.1765 6.38067C15.1765 6.24963 15.1732 6.11858 15.1672 5.98877C15.6535 5.66205 16.0907 5.27354 16.4647 4.83752Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="text-dark-6 hover:text-primary"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="fill-current"
-                    >
-                      <path
-                        d="M9.02429 11.8066C10.5742 11.8066 11.8307 10.5501 11.8307 9.00018C11.8307 7.45022 10.5742 6.19373 9.02429 6.19373C7.47433 6.19373 6.21783 7.45022 6.21783 9.00018C6.21783 10.5501 7.47433 11.8066 9.02429 11.8066Z"
-                        fill=""
-                      />
-                      <path
-                        d="M12.0726 1.5H5.92742C3.48387 1.5 1.5 3.48387 1.5 5.92742V12.0242C1.5 14.5161 3.48387 16.5 5.92742 16.5H12.0242C14.5161 16.5 16.5 14.5161 16.5 12.0726V5.92742C16.5 3.48387 14.5161 1.5 12.0726 1.5ZM9.02419 12.6774C6.96774 12.6774 5.34677 11.0081 5.34677 9C5.34677 6.99194 6.99194 5.32258 9.02419 5.32258C11.0323 5.32258 12.6774 6.99194 12.6774 9C12.6774 11.0081 11.0565 12.6774 9.02419 12.6774ZM14.1048 5.66129C13.8629 5.92742 13.5 6.07258 13.0887 6.07258C12.7258 6.07258 12.3629 5.92742 12.0726 5.66129C11.8065 5.39516 11.6613 5.05645 11.6613 4.64516C11.6613 4.23387 11.8065 3.91935 12.0726 3.62903C12.3387 3.33871 12.6774 3.19355 13.0887 3.19355C13.4516 3.19355 13.8387 3.33871 14.1048 3.60484C14.3468 3.91935 14.5161 4.28226 14.5161 4.66935C14.4919 5.05645 14.3468 5.39516 14.1048 5.66129Z"
-                        fill=""
-                      />
-                      <path
-                        d="M13.1135 4.06433C12.799 4.06433 12.5329 4.33046 12.5329 4.64498C12.5329 4.95949 12.799 5.22562 13.1135 5.22562C13.428 5.22562 13.6942 4.95949 13.6942 4.64498C13.6942 4.33046 13.4522 4.06433 13.1135 4.06433Z"
-                        fill=""
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -4018,7 +2847,7 @@
                 Our Recent News
               </h2>
               <p class="text-base text-body-color dark:text-dark-6">
-                Check out our latest news and the places we have recently visited and lives we have touched!
+                Check out our latest news and the places we have recently visited and lifes we have touched!
               </p>
             </div>
           </div>

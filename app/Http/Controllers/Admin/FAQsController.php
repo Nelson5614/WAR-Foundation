@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Counselor;
-use Illuminate\Http\Request;
-use App\Models\SetANewSession;
-use App\Models\StudentSession;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\FAQs;
+use Illuminate\Http\Request;
 
-class UpcomingSessionsController extends Controller
+class FAQsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class UpcomingSessionsController extends Controller
      */
     public function index()
     {
-
-        $sessions = StudentSession::paginate(10);
-       return view('counselors.upcomingSessions.index', compact(
-        'sessions'));
+        $faqs = FAQs::paginate(10);
+        return view('admin.faq', compact('faqs'));
     }
 
     /**
@@ -28,7 +25,7 @@ class UpcomingSessionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.FAQ.index');
     }
 
     /**
@@ -39,7 +36,14 @@ class UpcomingSessionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'question'=> 'string|required',
+            'answer'=> 'string|required'
+        ]);
+
+        FAQs::create($request->all());
+
+        return redirect()->back()->with('success', 'FAQ created successfully');
     }
 
     /**
@@ -50,7 +54,7 @@ class UpcomingSessionsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -61,7 +65,8 @@ class UpcomingSessionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $faq = FAQs::findOrFail($id);
+        return view('admin.FAQ.edit', compact('faq'));
     }
 
     /**
@@ -71,9 +76,15 @@ class UpcomingSessionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FAQs $faq)
     {
-        //
+        $request->validate([
+            'question'=> 'string|required',
+            'answer'=> 'string|required'
+        ]);
+
+        $faq->update($request->all());
+        return redirect()->back()->with('success', 'FAQ updated successfully');
     }
 
     /**
@@ -84,9 +95,8 @@ class UpcomingSessionsController extends Controller
      */
     public function destroy($id)
     {
-        $upcomingSessions = StudentSession::findOrFail($id);
-        $upcomingSessions->delete();
-
-        return redirect()->back()->with('success', 'Session delete successfully');
+        $faq = FAQs::findOrFail($id);
+        $faq->delete();
+        return redirect()->back()->with('success', 'FAQ deleted successfully');
     }
 }
