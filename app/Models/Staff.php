@@ -14,6 +14,7 @@ class Staff extends Model
         'last_name',
         'phone',
         'email',
-        'department'
+        'department',
+        'photo'
     ];
 }

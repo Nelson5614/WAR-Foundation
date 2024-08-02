@@ -1,14 +1,18 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Student\FileController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Counselor\FileDownloadController;
 use App\Http\Controllers\Counselor\NotificationsController;
 use App\Http\Controllers\Counselor\ShareProjectsController;
 use App\Http\Controllers\Counselor\SessionSortingController;
 use App\Http\Controllers\Counselor\ViewStudentFormController;
-use App\Http\Controllers\Admin\AdminController as AdminDashboardController;
 use App\Http\Controllers\Member\MemberController as MemberDashboardController;
 use App\Http\Controllers\Student\StudentController as StudentDashboardController;
 use App\Http\Controllers\Counselor\CounselorController as CounselorDashboardController;
@@ -16,12 +20,11 @@ use App\Http\Controllers\Counselor\CounselorController as CounselorDashboardCont
 
 Route::get('/', [PagesController::class, 'faq'])->name('pages.index');
 
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-  Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
-     Route::get('/dashboard', function () {
-         return view('dashboard');
-     })->name('dashboard');
- });
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::middleware(['role:admin'])->group(function(){
@@ -68,3 +71,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     });
 
 });
+

@@ -75,7 +75,7 @@
 
                                         </div>
                                         <div class="px-1">
-                                            <form action="{{ route('library.destroy', $testimonial->id) }}" method="POST">
+                                            <form action="{{ route('testimonials.destroy', $testimonial->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="px-2 py-2 text-white bg-red-600 rounded-md" >Delete</button>

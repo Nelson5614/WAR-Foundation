@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 use App\Models\Staff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 class StaffController extends Controller
 {
@@ -45,18 +46,24 @@ class StaffController extends Controller
             'last_name'=>'required|string|max:255',
             'email'=>'required|string|email|max:255|unique:staff',
             'phone'=>'required|string|max:255',
-            'department'=>'required|string|max:255'
+            'department'=>'required|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $staff = new Staff([
-            'name'=>$request->input('name'),
-            'last_name'=>$request->input('last_name'),
-            'email'=>$request->input('email'),
-            'phone'=>$request->input('phone'),
-            'department'=>$request->input('department'),
-        ]);
 
-        $staff->save();
+        // Set default photo if not provided
+        $photoPath = $request->hasFile('photo')
+            ? $request->file('photo')->store('photos', 'public')
+            : 'assets/images/team/default.png';
+
+        Staff::create([
+            'name' => $request->name,
+            'last_nane' => $request->last_name,
+            'photo' => $photoPath,
+            'email' => $request->email,
+            'department' => $request->department,
+            'phone' => $request->phone,
+        ]);
 
         return redirect()->back()->with('success', 'You have just added a new member successfully');
 

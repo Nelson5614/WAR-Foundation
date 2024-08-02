@@ -47,7 +47,7 @@ class TestimonialController extends Controller
         // Set default photo if not provided
         $photoPath = $request->hasFile('photo')
             ? $request->file('photo')->store('photos', 'public')
-            : 'photos/default-avatar.png';
+            : 'assets/images/team/default.png';
 
         Testimonial::create([
             'name' => $request->name,
