@@ -15,9 +15,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-
-        $projects = Project::paginate(10);
-        return view('admin.projects', compact('projects'));
+        $projects = Project::latest()->paginate(10);
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -27,7 +26,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.index');
+        return view('admin.projects.create');
     }
 
     /**
@@ -38,19 +37,26 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-       $this->authorize('add projects');
-        $request->validate([
-            'title'=>'required|string|max:255',
-            'manager'=>'required|string|max:255',
-            'start_date'=>'required|date|max:255',
-            'end_date'=>'required|date|max:255',
+        $this->authorize('add projects');
+        
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'manager' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
             'status' => 'required|string|in:active,in_progress,complete',
-            'description'=>'required|string|max:255'
+            'description' => 'required|string|max:1000'
         ]);
 
-       Project::create($request->all());
-
-        return redirect()->back()->with('success', 'You have just added a new project successfully! Goodluck');
+        try {
+            Project::create($validated);
+            return redirect()->route('projects.index')
+                ->with('success', 'Project created successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Error creating project: ' . $e->getMessage())
+                ->withInput();
+        }
     }
 
     /**

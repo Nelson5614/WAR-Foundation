@@ -1,91 +1,128 @@
 @extends('layouts.admin')
+
 @section('content')
+<div class="flex flex-col w-full overflow-x-hidden border-t">
+    <main class="flex-grow w-full p-6">
+        @if (session('success'))
+            <div class="p-4 mb-6 text-green-700 bg-green-100 border border-green-400 rounded">
+                {{ session('success') }}
+            </div>
+        @endif
 
-@if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
+        @if (session('error'))
+            <div class="p-4 mb-6 text-red-700 bg-red-100 border border-red-400 rounded">
+                {{ session('error') }}
+            </div>
+        @endif
 
-@if (session('error'))
-
-<div class="alert alert-danger">
-    {{ session('error') }}
-</div>
-
-@endif
-<div class="min-h-screen container mx-auto py-8 px-20 w-full">
-
-    <div class=" min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-          <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Edit Details On This Project</h2>
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Edit Project</h1>
+            <a href="{{ route('projects.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Back to Projects
+            </a>
         </div>
 
-        <div class="mt-10 sm:mx-auto w-full ">
-            <form class="space-y-6" action="{{ route('projects.update', $project->id) }}" method="POST">
-                @method('PUT')
-                @csrf
-                <div class=" grid md:grid-cols-2 md:gap-6">
-
-                    <div>
-                        <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Project Title</label>
-                        <div class="mt-2">
-                            <input id="title" name="title" type="text" required value="{{ old('title', $project->title) }}" class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="p-6">
+                <form action="{{ route('projects.update', $project->id) }}" method="POST" class="space-y-6">
+                    @method('PUT')
+                    @csrf
+                    
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div>
+                            <label for="title" class="block text-sm font-medium text-gray-700">Project Title</label>
+                            <div class="mt-1">
+                                <input type="text" name="title" id="title" required 
+                                       value="{{ old('title', $project->title) }}"
+                                       class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('title')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div>
+                            <label for="manager" class="block text-sm font-medium text-gray-700">Project Manager</label>
+                            <div class="mt-1">
+                                <input type="text" name="manager" id="manager" required 
+                                       value="{{ old('manager', $project->manager) }}"
+                                       class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('manager')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label for="manager" class="block text-sm font-medium leading-6 text-gray-900">Project manager</label>
-                        <div class="mt-2">
-                            <input id="manager" name="manager" type="text" required value="{{ old('manager', $project->manager) }}" class=" pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div>
+                            <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                            <div class="mt-1">
+                                <input type="date" name="start_date" id="start_date" required 
+                                       value="{{ old('start_date', $project->start_date) }}"
+                                       class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('start_date')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div>
+                            <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
+                            <div class="mt-1">
+                                <input type="date" name="end_date" id="end_date" required 
+                                       value="{{ old('end_date', $project->end_date) }}"
+                                       min="{{ $project->start_date }}"
+                                       class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                @error('end_date')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                <div class=" grid md:grid-cols-2 md:gap-6">
 
                     <div>
-                        <label for="start_date" class="block text-sm font-medium leading-6 text-gray-900">Start Date</label>
-                        <div class="mt-2">
-                            <input id="start_date" name="start_date" type="date" value="{{ old('start_date', $project->start_date) }}" required class=" pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                        <select id="status" name="status" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="active" {{ old('status', $project->status) == 'active' ? 'selected' : '' }}>Active</option>
+                            <option value="in_progress" {{ old('status', $project->status) == 'in_progress' ? 'selected' : '' }}>In Progress</option>
+                            <option value="complete" {{ old('status', $project->status) == 'complete' ? 'selected' : '' }}>Complete</option>
+                        </select>
+                        @error('status')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <div class="mt-1">
+                            <textarea id="description" name="description" rows="4" required
+                                      class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description', $project->description) }}</textarea>
+                            @error('description')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
-                    <div>
-                        <label for="end_date" class="block text-sm font-medium leading-6 text-gray-900">End Date</label>
-                        <div class="mt-2">
-                            <input id="end_date" name="end_date" type="date" value="{{ old('end_date', $project->end_date) }}" required class=" pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        </div>
+                    <div class="flex items-center justify-end pt-6 border-t border-gray-200">
+                        <a href="{{ route('projects.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Cancel
+                        </a>
+                        <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Update Project
+                        </button>
                     </div>
-                </div>
-                <div class="form-group hidden">
-                    <label for="status">Status</label>
-                    <select id="status" name="status" class="form-control">
-                        <option value="active" {{ (isset($project) && $project->status == 'active') ? 'selected' : '' }}>Active</option>
-                        <option value="in_progress" {{ (isset($project) && $project->status == 'in_progress') ? 'selected' : '' }}>In Progress</option>
-                        <option value="complete" {{ (isset($project) && $project->status == 'complete') ? 'selected' : '' }}>Complete</option>
-                    </select>
-                </div>
-
-                <div class="mt-2">
-                    <label for="description" class="block text-sm font-medium leading-6 text-gray-900">description</label>
-                    <div class="mt-2">
-                        <textarea id="description" name="description" type="text-area" class=" pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('description', $project->description) }}</textarea>
-                    </div>
-
-                </div>
-
-                <div class="mt-4">
-                <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add Project</button>
-                </div>
-            </form>
-
-          <p class="mt-10 text-center text-sm text-gray-500">
-
-            <a href="{{ route('projects.index') }}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Go Back</a>
-          </p>
+                </form>
+            </div>
         </div>
-    </div>
-
+    </main>
 </div>
+
+@push('scripts')
+<script>
+    // Update end date min when start date changes
+    document.getElementById('start_date').addEventListener('change', function() {
+        document.getElementById('end_date').min = this.value;
+    });
+</script>
+@endpush
+
 @endsection

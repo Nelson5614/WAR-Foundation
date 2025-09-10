@@ -14,8 +14,8 @@ class AdminLibraryController extends Controller
      */
     public function index()
     {
-        $library = Library::paginate(10);
-        return view('admin.library', compact('library'));
+        $library = Library::latest()->paginate(10);
+        return view('admin.library.index', compact('library'));
     }
 
     /**
@@ -25,7 +25,7 @@ class AdminLibraryController extends Controller
      */
     public function create()
     {
-        return view('admin.library.index');
+        return view('admin.library.create');
     }
 
     /**
@@ -37,23 +37,24 @@ class AdminLibraryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_name' => 'required|string|max:255',
-            'file_path' => 'required|file|mimes:pdf,doc,docx,txt'
+            'title' => 'required|string|max:255',
+            'file' => 'required|file|mimes:pdf|max:10240' // 10MB max
         ]);
 
-        $file_path = $request->file('file_path');
-        $file_name = $request->input('file_name').'.'.$file_path->getClientOriginalExtension();
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('public/uploads', $fileName);
 
-        //store the file
-        $path = $file_path->storeAs('public/uploads', $file_name);
+            Library::create([
+                'file_name' => $request->input('title'),
+                'file_path' => $path
+            ]);
 
-        //store to the database
-        Library::create([
-            'file_name'=>$file_name,
-            'file_path'=>$path
-        ]);
+            return redirect()->route('library.index')->with('success', 'File uploaded successfully');
+        }
 
-        return redirect()->back()->with('success', 'File uploaded successfully');
+        return back()->with('error', 'File upload failed');
     }
 
     /**

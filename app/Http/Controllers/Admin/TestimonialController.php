@@ -13,10 +13,15 @@ class TestimonialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
-        $testimonials = Testimonial::paginate(10);
-        return view('admin.testimonials', compact('testimonials'));
+        $testimonials = Testimonial::latest()->paginate(10);
+        return view('admin.testimonials.index', compact('testimonials'));
     }
 
     /**
@@ -24,9 +29,14 @@ class TestimonialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
-        return view('admin.testimonials.index');
+        return view('admin.testimonials.create');
     }
 
     /**
@@ -35,28 +45,48 @@ class TestimonialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'occupation' => 'required|string|max:255',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'content' => 'required|string',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'content' => 'required|string|max:1000',
         ]);
 
-        // Set default photo if not provided
-        $photoPath = $request->hasFile('photo')
-            ? $request->file('photo')->store('photos', 'public')
-            : 'assets/images/team/default.png';
+        try {
+            // Store the uploaded photo
+            $photoPath = $request->file('photo')->store('testimonials', 'public');
+            
+            // Create testimonial with the photo path
+            Testimonial::create([
+                'name' => $validated['name'],
+                'occupation' => $validated['occupation'],
+                'photo' => $photoPath,
+                'content' => $validated['content'],
+            ]);
 
-        Testimonial::create([
-            'name' => $request->name,
-            'occupation' => $request->occupation,
-            'photo' => $photoPath,
-            'content' => $request->content,
-        ]);
-
-        return redirect()->route('testimonials.index')->with('success', 'Testimonial created successfully.');
+            return redirect()->route('testimonials.index')
+                ->with('success', 'Testimonial created successfully.');
+                
+        } catch (\Exception $e) {
+            // Log the error
+            \Log::error('Error creating testimonial: ' . $e->getMessage());
+            
+            // Delete the uploaded file if it exists
+            if (isset($photoPath) && Storage::disk('public')->exists($photoPath)) {
+                Storage::disk('public')->delete($photoPath);
+            }
+            
+            return back()->withInput()
+                ->with('error', 'Error creating testimonial. Please try again.');
+        }
     }
 
 

@@ -14,8 +14,8 @@ class FAQsController extends Controller
      */
     public function index()
     {
-        $faqs = FAQs::paginate(10);
-        return view('admin.faq', compact('faqs'));
+        $faqs = FAQs::latest()->paginate(10);
+        return view('admin.FAQ.index', compact('faqs'));
     }
 
     /**
@@ -25,7 +25,8 @@ class FAQsController extends Controller
      */
     public function create()
     {
-        return view('admin.FAQ.index');
+        // The create form is handled by a modal in the index view
+        return redirect()->route('faqs.index');
     }
 
     /**
@@ -36,14 +37,25 @@ class FAQsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'question'=> 'string|required',
-            'answer'=> 'string|required'
+        $validated = $request->validate([
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string|max:2000'
+        ], [
+            'question.required' => 'The question field is required.',
+            'answer.required' => 'The answer field is required.',
+            'question.max' => 'The question may not be greater than 255 characters.',
+            'answer.max' => 'The answer may not be greater than 2000 characters.'
         ]);
 
-        FAQs::create($request->all());
-
-        return redirect()->back()->with('success', 'FAQ created successfully');
+        try {
+            FAQs::create($validated);
+            return redirect()->route('faqs.index')
+                ->with('success', 'FAQ created successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Error creating FAQ: ' . $e->getMessage())
+                ->withInput();
+        }
     }
 
     /**
@@ -76,15 +88,29 @@ class FAQsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FAQs $faq)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'question'=> 'string|required',
-            'answer'=> 'string|required'
+        $validated = $request->validate([
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string|max:2000'
+        ], [
+            'question.required' => 'The question field is required.',
+            'answer.required' => 'The answer field is required.',
+            'question.max' => 'The question may not be greater than 255 characters.',
+            'answer.max' => 'The answer may not be greater than 2000 characters.'
         ]);
 
-        $faq->update($request->all());
-        return redirect()->back()->with('success', 'FAQ updated successfully');
+        try {
+            $faq = FAQs::findOrFail($id);
+            $faq->update($validated);
+            
+            return redirect()->route('faqs.index')
+                ->with('success', 'FAQ updated successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Error updating FAQ: ' . $e->getMessage())
+                ->withInput();
+        }
     }
 
     /**
@@ -95,8 +121,15 @@ class FAQsController extends Controller
      */
     public function destroy($id)
     {
-        $faq = FAQs::findOrFail($id);
-        $faq->delete();
-        return redirect()->back()->with('success', 'FAQ deleted successfully');
+        try {
+            $faq = FAQs::findOrFail($id);
+            $faq->delete();
+            
+            return redirect()->route('faqs.index')
+                ->with('success', 'FAQ deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Error deleting FAQ: ' . $e->getMessage());
+        }
     }
 }

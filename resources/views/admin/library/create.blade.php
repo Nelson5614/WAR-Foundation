@@ -18,7 +18,7 @@
 
             <div class="bg-white rounded-lg shadow-md p-8">
                 <div class="text-center mb-8">
-                    <h2 class="text-2xl font-bold text-gray-800">Upload Library Material</h2>
+                    <h2 class="text-2xl font-bold text-gray-800">Upload New Library Material</h2>
                     <p class="text-gray-600 mt-2">Add new educational materials to your library</p>
                 </div>
 
@@ -80,4 +80,3 @@
 @endpush
 
 @endsection
-

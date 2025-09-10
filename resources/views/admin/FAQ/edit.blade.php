@@ -1,58 +1,74 @@
 @extends('layouts.admin')
+
 @section('content')
+<div class="flex flex-col w-full overflow-x-hidden border-t">
+    <main class="flex-grow w-full p-6">
+        @if (session('success'))
+            <div class="p-4 mb-6 text-green-700 bg-green-100 border border-green-400 rounded">
+                {{ session('success') }}
+            </div>
+        @endif
 
-@if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
+        @if (session('error'))
+            <div class="p-4 mb-6 text-red-700 bg-red-100 border border-red-400 rounded">
+                {{ session('error') }}
+            </div>
+        @endif
 
-@if (session('error'))
-
-<div class="alert alert-danger">
-    {{ session('error') }}
-</div>
-
-@endif
-<div class="min-h-screen container mx-auto py-8 px-20 w-full">
-
-    <div class=" min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-          <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create New FAQ</h2>
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Edit FAQ</h1>
+            <a href="{{ route('faqs.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Back to FAQs
+            </a>
         </div>
 
-        <div class="mt-10 sm:mx-auto w-full ">
-            <form class="space-y-6" action="{{ route('faqs.update', $faq->id) }}" method="POST">
-                @method('PUT')
-                @csrf
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="p-6">
+                <form action="{{ route('faqs.update', $faq->id) }}" method="POST" class="space-y-6">
+                    @method('PUT')
+                    @csrf
 
-                <div>
-                    <label for="question" class="block text-sm font-medium leading-6 text-gray-900">Question</label>
-                    <div class="mt-2">
-                        <input id="question" name="question" type="text" autocomplete="question" value="{{ old('question', $faq->question) }}" required class="pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <div>
+                        <label for="question" class="block text-sm font-medium text-gray-700">Question</label>
+                        <div class="mt-1">
+                            <input type="text" name="question" id="question" required 
+                                   value="{{ old('question', $faq->question) }}"
+                                   class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            @error('question')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
-                </div>
 
-                <div class="mt-2">
-                    <label for="answer" class="block text-sm font-medium leading-6 text-gray-900">Answer</label>
-                    <div class="mt-2">
-                        <textarea id="answer" name="answer" type="text-area" autocomplete="answer"value="" required class=" pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('answer', $faq->answer) }}</textarea>
+                    <div>
+                        <label for="answer" class="block text-sm font-medium text-gray-700">Answer</label>
+                        <div class="mt-1">
+                            <textarea id="answer" name="answer" rows="4" required 
+                                      class="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('answer', $faq->answer) }}</textarea>
+                            @error('answer')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
 
-                </div>
-
-                <div class="mt-4">
-                <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update FAQ</button>
-                </div>
-            </form>
-
-          <p class="mt-10 text-center text-sm text-gray-500">
-
-            <a href="{{ route('faqs.index') }}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Go Back</a>
-          </p>
+                    <div class="flex items-center justify-end pt-6 border-t border-gray-200">
+                        <a href="{{ route('faqs.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Cancel
+                        </a>
+                        <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Update FAQ
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-
+    </main>
 </div>
+
+@push('scripts')
+<script>
+    // Add any additional JavaScript if needed
+</script>
+@endpush
+
 @endsection

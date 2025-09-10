@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class StaffController extends Controller
@@ -11,62 +13,85 @@ class StaffController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-
-        $staff = Staff::paginate(10);
-        return view('admin.managestaff', compact('staff'));
+        $staff = Staff::latest()->paginate(10);
+        return view('admin.staff.index', compact('staff'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-
-
-    public function create(Request $request)
+    public function create()
     {
-        return view('admin.staff.index');
-
+        return view('admin.staff.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required|string|max:255',
-            'last_name'=>'required|string|max:255',
-            'email'=>'required|string|email|max:255|unique:staff',
-            'phone'=>'required|string|max:255',
-            'department'=>'required|string|max:255',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:staff,email',
+            'phone' => 'required|string|max:20',
+            'department' => 'required|string|max:255',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'bio' => 'nullable|string|max:1000',
+        ], [
+            'name.required' => 'The first name field is required.',
+            'last_name.required' => 'The last name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.unique' => 'This email is already in use.',
+            'phone.required' => 'The phone number is required.',
+            'department.required' => 'The department field is required.',
+            'photo.image' => 'The photo must be an image file.',
+            'photo.mimes' => 'The photo must be a file of type: jpeg, png, jpg, gif, svg.',
+            'photo.max' => 'The photo must not be larger than 2MB.',
+            'bio.max' => 'The bio must not be longer than 1000 characters.'
         ]);
 
+        try {
+            // Handle file upload if photo exists
+            $photoPath = 'assets/images/team/default.png';
+            if ($request->hasFile('photo')) {
+                $photoPath = $request->file('photo')->store('staff/photos', 'public');
+            }
 
-        // Set default photo if not provided
-        $photoPath = $request->hasFile('photo')
-            ? $request->file('photo')->store('photos', 'public')
-            : 'assets/images/team/default.png';
+            Staff::create([
+                'name' => $validated['name'],
+                'last_name' => $validated['last_name'],
+                'email' => $validated['email'],
+                'phone' => $validated['phone'],
+                'department' => $validated['department'],
+                'photo' => $photoPath,
+                'bio' => $validated['bio'] ?? null,
+            ]);
 
-        Staff::create([
-            'name' => $request->name,
-            'last_nane' => $request->last_name,
-            'photo' => $photoPath,
-            'email' => $request->email,
-            'department' => $request->department,
-            'phone' => $request->phone,
-        ]);
-
-        return redirect()->back()->with('success', 'You have just added a new member successfully');
-
+            return redirect()->route('staff.index')
+                ->with('success', 'Staff member added successfully!');
+                
+        } catch (\Exception $e) {
+            // Delete the uploaded file if an error occurs
+            if (isset($photoPath) && $photoPath !== 'assets/images/team/default.png') {
+                Storage::disk('public')->delete($photoPath);
+            }
+            
+            Log::error('Error creating staff member: ' . $e->getMessage());
+            
+            return redirect()->back()
+                ->with('error', 'Error creating staff member. Please try again.')
+                ->withInput();
+        }
     }
 
     /**
@@ -77,14 +102,15 @@ class StaffController extends Controller
      */
     public function show($id)
     {
-
+        // Not implemented as we're showing details in the index
+        abort(404);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function edit($id)
     {
@@ -97,43 +123,95 @@ class StaffController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name'=>'required|string|max:255',
-            'last_name'=>'required|string|max:255',
-            'email'=>'required|string|email|max:255',
-            'phone'=>'required|string|max:255',
-            'department'=>'required|string|max:255'
+        $staff = Staff::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:staff,email,' . $staff->id,
+            'phone' => 'required|string|max:20',
+            'department' => 'required|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'bio' => 'nullable|string|max:1000',
+        ], [
+            'name.required' => 'The first name field is required.',
+            'last_name.required' => 'The last name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.unique' => 'This email is already in use.',
+            'phone.required' => 'The phone number is required.',
+            'department.required' => 'The department field is required.',
+            'photo.image' => 'The photo must be an image file.',
+            'photo.mimes' => 'The photo must be a file of type: jpeg, png, jpg, gif, svg.',
+            'photo.max' => 'The photo must not be larger than 2MB.',
+            'bio.max' => 'The bio must not be longer than 1000 characters.'
         ]);
 
-        $staff = Staff::findOrFail($id);
-            // Find the staff member by ID
-        $staff = Staff::findOrFail($id);
+        try {
+            // Handle file upload if a new photo is provided
+            if ($request->hasFile('photo')) {
+                // Delete old photo if it's not the default
+                if ($staff->photo && $staff->photo !== 'assets/images/team/default.png') {
+                    Storage::disk('public')->delete($staff->photo);
+                }
+                $validated['photo'] = $request->file('photo')->store('staff/photos', 'public');
+            } else if (!isset($validated['photo'])) {
+                // Keep the existing photo if no new one is uploaded
+                unset($validated['photo']);
+            }
 
-        // Update staff details with validated request data
-        $staff->update([
-        'name' => $request->input('name'),
-        'last_name' => $request->input('last_name'),
-        'email' => $request->input('email'),
-        'phone' => $request->input('phone'),
-        'department' => $request->input('department'),
-    ]);
-        return redirect()->route('staff.index')->with('success', 'Member details updated successfully');
+            $staff->update($validated);
+
+            return redirect()->route('staff.index')
+                ->with('success', 'Staff member updated successfully!');
+                
+        } catch (\Exception $e) {
+            // Delete the uploaded file if an error occurs
+            if (isset($validated['photo'])) {
+                Storage::disk('public')->delete($validated['photo']);
+            }
+            
+            Log::error('Error updating staff member: ' . $e->getMessage());
+            
+            return redirect()->back()
+                ->with('error', 'Error updating staff member. Please try again.')
+                ->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
         $staff = Staff::findOrFail($id);
-        $staff->delete();
-        return redirect()->route('staff.index')->with('success', 'Member removed successfully');
+        
+        try {
+            // Store the photo path before deletion
+            $photoPath = $staff->photo;
+            
+            // Delete the staff member
+            $staff->delete();
+            
+            // Delete the photo if it's not the default
+            if ($photoPath && $photoPath !== 'assets/images/team/default.png') {
+                Storage::disk('public')->delete($photoPath);
+            }
+            
+            return redirect()->route('staff.index')
+                ->with('success', 'Staff member deleted successfully!');
+                
+        } catch (\Exception $e) {
+            Log::error('Error deleting staff member: ' . $e->getMessage());
+            
+            return redirect()->route('staff.index')
+                ->with('error', 'Error deleting staff member. Please try again.');
+        }
     }
 }
