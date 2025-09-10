@@ -59,8 +59,8 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <div class="flex justify-end space-x-2">
-                                            <a href="{{ route('faqs.edit', $faq->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            <form action="{{ route('faqs.destroy', $faq->id) }}" method="POST" class="inline">
+                                            <a href="{{ route('admin.faqs.edit', $faq->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            <form action="{{ route('admin.faqs.destroy', $faq->id) }}" method="POST" class="inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Are you sure you want to delete this FAQ?')">
@@ -103,7 +103,7 @@
         <div class="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <div class="mt-2">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">Add New FAQ</h3>
-                <form class="mt-4 space-y-4" action="{{ route('faqs.store') }}" method="POST">
+                <form class="mt-4 space-y-4" action="{{ route('admin.faqs.store') }}" method="POST">
                     @csrf
                     <div>
                         <label for="modal_question" class="block text-sm font-medium text-gray-700">Question</label>

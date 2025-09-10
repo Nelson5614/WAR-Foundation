@@ -5,7 +5,7 @@
     <main class="flex-grow w-full p-6">
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Edit Staff Member</h1>
-            <a href="{{ route('staff.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <a href="{{ route('admin.staff.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Back to Staff
             </a>
         </div>
@@ -34,7 +34,7 @@
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-5 sm:p-6">
-                <form action="{{ route('staff.update', $staff->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.staff.update', $staff->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     
@@ -92,7 +92,7 @@
                         </div>
 
                         <div class="flex items-center justify-end pt-6 space-x-3">
-                            <a href="{{ route('staff.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <a href="{{ route('admin.staff.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 Cancel
                             </a>
                             <button type="submit"
@@ -107,31 +107,4 @@
     </main>
 </div>
 @endsection
-                    </div>
-                </div>
-                <div>
-                    <label for="department" class="block text-sm font-medium leading-6 text-gray-900">Department</label>
-                    <div class="mt-2">
-                        <input id="department" name="department" type="text" value="{{ old('department', $staff->department) }}" class=" pl-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                    <div class="w-1/4">
-                        <label for="photo">Upload Photo</label>
-                        <input type="file" name="photo" class="" required>
-                    </div>
-
-                </div>
-
-                <div>
-                <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
-                </div>
-            </form>
-
-          <p class="mt-10 text-sm text-center text-gray-500">
-
-            <a href="{{ route('staff.index') }}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Go Back</a>
-          </p>
-        </div>
-    </div>
-
-</div>
-@endsection
+                  

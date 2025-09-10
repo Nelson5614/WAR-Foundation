@@ -17,14 +17,14 @@
 
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Edit Project</h1>
-            <a href="{{ route('projects.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <a href="{{ route('admin.projects.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Back to Projects
             </a>
         </div>
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="p-6">
-                <form action="{{ route('projects.update', $project->id) }}" method="POST" class="space-y-6">
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" class="space-y-6">
                     @method('PUT')
                     @csrf
                     
@@ -103,7 +103,7 @@
                     </div>
 
                     <div class="flex items-center justify-end pt-6 border-t border-gray-200">
-                        <a href="{{ route('projects.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <a href="{{ route('admin.projects.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Cancel
                         </a>
                         <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

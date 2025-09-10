@@ -7,8 +7,8 @@
         <!-- Header Section -->
         <div class="flex flex-col justify-between mb-8 md:items-center md:flex-row">
             <div>
-                <h1 class="text-3xl font-bold text-gray-800">Dashboard Overview</h1>
-                <p class="mt-2 text-gray-600">Welcome back, <span class="font-medium text-indigo-600">{{ Auth::user()->name }}</span>! Here's what's happening with your platform.</p>
+                
+                <p class="mt-2 text-gray-600">Welcome back, <span class="font-medium text-indigo-600">{{ Auth::user()->name }}</span></p>
                 <p class="text-sm text-gray-500" id="current-time"></p>
             </div>
             <div class="mt-4 md:mt-0">
@@ -24,7 +24,7 @@
         </div>
 
         <!-- Stats Grid -->
-        <div class="grid grid-cols-1 gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid grid-cols-1 gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-3">
             <!-- Staff Card -->
             <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                 <a href="{{ route('admin.staff.index') }}" class="block">
@@ -229,7 +229,6 @@
     });
 </script>
 @endpush
-
 @push('styles')
 <style>
     /* Custom scrollbar */
@@ -264,101 +263,5 @@
 </style>
 @endpush
 
-<!-- Charts Section -->
-<div class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
-    <!-- Monthly Sessions Chart -->
-    <div class="p-6 bg-white rounded-lg shadow-sm">
-        <h3 class="mb-4 text-lg font-semibold text-gray-900">Monthly Sessions</h3>
-        <div class="h-64">
-            <canvas id="sessionsChart"></canvas>
-        </div>
-    </div>
-
-    <!-- Recent Activity Summary -->
-    <div class="p-6 bg-white rounded-lg shadow-sm">
-        <h3 class="mb-4 text-lg font-semibold text-gray-900">Recent Activity</h3>
-        <div class="space-y-4">
-            @forelse($recentActivities->take(3) ?? [] as $activity)
-                <div class="flex items-start">
-                    <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 text-white bg-indigo-600 rounded-full">
-                        {{ strtoupper(substr($activity->user->name, 0, 1)) }}
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">{{ $activity->user->name }}</p>
-                        <p class="text-sm text-gray-600">{{ $activity->description }}</p>
-                        <p class="mt-1 text-xs text-gray-500">{{ $activity->created_at->diffForHumans() }}</p>
-                    </div>
-                </div>
-            @empty
-                <p class="text-sm text-gray-500">No recent activities found.</p>
-            @endforelse
-        </div>
-    </div>
-</div>
-
-@push('scripts')
-<script>
-    // Initialize charts after the page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        // Monthly Sessions Chart
-        const sessionsCtx = document.getElementById('sessionsChart').getContext('2d');
-        const sessionCounts = @json($sessionCounts);
-        
-        new Chart(sessionsCtx, {
-            type: 'bar',
-            data: {
-                labels: {!! json_encode(now()->subMonths(5)->monthsUntil(now())->map(function ($date) {
-                    return $date->format('M Y');
-                })) !!},
-                datasets: [{
-                    label: 'Sessions',
-                    data: sessionCounts,
-                    backgroundColor: 'rgba(79, 70, 229, 0.7)',
-                    borderColor: 'rgba(79, 70, 229, 1)',
-                    borderWidth: 1,
-                    borderRadius: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            display: true,
-                            drawBorder: false
-                        },
-                        ticks: {
-                            stepSize: 1
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                        titleFont: {
-                            size: 14
-                        },
-                        bodyFont: {
-                            size: 13
-                        },
-                        padding: 12,
-                        usePointStyle: true
-                    }
-                }
-            }
-        });
-    });
-</script>
-@endpush
-
 @endsection
+                   

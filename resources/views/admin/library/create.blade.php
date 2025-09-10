@@ -22,7 +22,7 @@
                     <p class="text-gray-600 mt-2">Add new educational materials to your library</p>
                 </div>
 
-                <form class="space-y-6" action="{{ route('library.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="space-y-6" action="{{ route('admin.library.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
                     <div class="space-y-2">
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="flex items-center justify-between pt-6 border-t border-gray-200">
-                        <a href="{{ route('library.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <a href="{{ route('admin.library.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Cancel
                         </a>
                         <button type="submit" class="px-6 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

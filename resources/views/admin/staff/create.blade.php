@@ -29,7 +29,7 @@
         <!-- Page Header -->
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Add New Staff Member</h1>
-            <a href="{{ route('staff.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <a href="{{ route('admin.staff.index') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Back to Staff List
             </a>
         </div>
@@ -37,7 +37,7 @@
         <!-- Staff Form -->
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-5 sm:p-6">
-                <form action="{{ route('staff.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.staff.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="space-y-6">
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -87,7 +87,7 @@
 
                         <div class="pt-5">
                             <div class="flex justify-end">
-                                <a href="{{ route('staff.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <a href="{{ route('admin.staff.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     Cancel
                                 </a>
                                 <button type="submit" class="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
