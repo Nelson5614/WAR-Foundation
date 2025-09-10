@@ -19,6 +19,8 @@ use App\Http\Controllers\Counselor\CounselorController as CounselorDashboardCont
 
 
 Route::get('/', [PagesController::class, 'faq'])->name('pages.index');
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{id}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

@@ -61,7 +61,8 @@ class StudentFilesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $studentfile = StudentSession::findOrFail($id);
+        return view('counselors.studentfiles.edit', compact('studentfile'));
     }
 
     /**
@@ -73,7 +74,45 @@ class StudentFilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:500',
+            'description' => 'required|string',
+        ]);
+
+        $studentfile = StudentSession::findOrFail($id);
+        
+        // Get the current description
+        $currentDescription = $studentfile->description;
+        
+        // Add a separator and timestamp for the new entry
+        $timestamp = now()->format('Y-m-d H:i:s');
+        $separator = "\n\n---\n**Update on {$timestamp}**\n\n";
+        
+        // Prepend the new notes to the existing ones
+        $updatedDescription = $validated['description'] . $separator . $currentDescription;
+        
+        // Update the student file
+        $studentfile->update([
+            'name' => $validated['name'],
+            'surname' => $validated['surname'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'address' => $validated['address'],
+            'description' => $updatedDescription,
+        ]);
+
+        // Send email notification if requested
+        if ($request->has('notify_student')) {
+            // TODO: Implement email notification
+            // Mail::to($studentfile->email)->send(new StudentFileUpdated($studentfile));
+        }
+
+        return redirect('/counselor/counselor-student-files')
+                         ->with('success', 'Student file updated successfully.');
     }
 
     /**

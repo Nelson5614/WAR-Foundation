@@ -1,43 +1,34 @@
 @extends('layouts.counselor')
 
-@section('content')
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="w-full max-w-lg p-8 bg-white border border-gray-300 rounded-lg shadow-lg">
-        <div class="flex justify-between mb-2">
-            <div>
-                <span>Logo</span></div> <!-- Empty div for alignment -->
-            <div>
-                <p class="text-right font-bold text-gray-500">ID: <span class="font-semibold text-red-500">#00{{ $student->id }}</span></p>
-                <p class="text-right font-bold text-gray-500">Issue: <span class="font-light text-gray-800">{{ $student->student_issue }}Anxiety</span></p>
-            </div>
-        </div>
-        <div class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Name:</label>
-                <p class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm sm:text-sm">{{ $student->name }}</p>
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Last Name:</label>
-                <p class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm sm:text-sm">{{ $student->surname }}</p>
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Email:</label>
-                <p class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm sm:text-sm">{{ $student->email }}</p>
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Address:</label>
-                <p class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm sm:text-sm">{{ $student->address }}</p>
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Phone:</label>
-                <p class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm sm:text-sm">{{ $student->phone }}</p>
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Note:</label>
-                <p class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm sm:text-sm">{{ $student->description }}</p>
-            </div>
-        </div>
-    </div>
+@section('title', 'Student Files')
 
+@section('content')
+<div class="flex flex-col w-full overflow-x-hidden">
+    <main class="flex-grow w-full p-6">
+        <!-- Header Section -->
+        <div class="flex flex-col justify-between mb-8 md:items-center md:flex-row">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900">Student Files</h1>
+                <p class="mt-2 text-gray-600">Search and manage student files and documents</p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <i class="mr-2 fas fa-upload"></i> Upload New File
+                </a>
+            </div>
+        </div>
+
+        <!-- Livewire Component -->
+        <livewire:find-student />
+    </main>
 </div>
+
+@push('scripts')
+<script>
+    // Add any additional JavaScript here if needed
+    document.addEventListener('livewire:load', function () {
+        // Livewire component is loaded
+    });
+</script>
+@endpush
 @endsection

@@ -126,7 +126,7 @@
         <!-- Main Content -->
         <div class="flex flex-col h-screen pt-16 md:pt-0 md:pl-64">
             <!-- Top Navigation -->
-            <header class="fixed top-0 right-0 left-0 md:left-64 z-30 flex items-center justify-between h-16 px-4 bg-white border-b border-gray-200 shadow-sm md:relative md:left-0">
+            <header class="fixed top-0 right-0 left-0 z-30 flex items-center justify-between h-16 px-4 bg-white border-b border-gray-200 shadow-sm md:relative md:left-0">
                 <div class="flex items-center">
                     <h1 class="ml-14 mt-2 md:ml-0 text-lg font-semibold text-gray-800">@yield('title', 'Dashboard')</h1>
                 </div>
