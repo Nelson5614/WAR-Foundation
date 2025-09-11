@@ -36,6 +36,8 @@
                         <img src="{{ asset('assets/images/logo/logo1.png') }}" alt="WAR Foundation Logo" class="h-10 w-auto">
                     </div>
                 </div>
+                
+                <!-- Desktop Navigation -->
                 <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
                     <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Home</a>
                     <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">About</a>
@@ -56,127 +58,207 @@
                         @endauth
                     @endif
                 </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Icon when menu is closed -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Icon when menu is open -->
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div class="hidden sm:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 bg-white shadow-lg">
+                <a href="#home" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100">Home</a>
+                <a href="#about" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100">About</a>
+                <a href="#services" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100">Services</a>
+                <a href="#contact" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100">Contact</a>
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100">
+                            Dashboard
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100">
+                            Log in
+                        </a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="block px-4 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-700">
+                                Get Started
+                            </a>
+                        @endif
+                    @endauth
+                @endif
             </div>
         </div>
     </nav>
 
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = mobileMenuButton.querySelector('.block');
+            const menuIconClose = mobileMenuButton.querySelector('.hidden');
+
+            mobileMenuButton.addEventListener('click', function() {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+            });
+
+            // Close menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+
     <!-- Hero Section -->
-    <div id="home" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20 md:py-32">
+    <section id="home" class="bg-gradient-to-b from-blue-800 to-blue-900 text-white py-20 md:py-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                <div class="mb-10 lg:mb-0 text-center lg:text-left">
-                    <span class="inline-block mb-4 px-4 py-1 text-sm font-semibold text-blue-100 bg-blue-600 rounded-full">Re Aha Bocha</span>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Rebuilding Lives Through Compassionate Support</h1>
-                    <p class="text-xl text-blue-100 mb-8">Providing essential counseling and support services to help individuals overcome life's challenges and build stronger communities.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
-                        <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white hover:text-blue-900 transition duration-150">
-                            Get Support
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </a>
-                        <a href="#about" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-900 bg-white hover:bg-blue-50 transition duration-150">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="relative rounded-xl overflow-hidden shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
-                        <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Supportive counseling session" class="w-full h-auto">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-6 text-white">
-                            <p class="text-sm font-medium">Professional counseling services available for individuals and groups</p>
-                        </div>
-                    </div>
+            <div class="text-center max-w-4xl mx-auto">
+                <span class="inline-block mb-6 px-5 py-2 text-sm font-semibold bg-white/10 backdrop-blur-sm rounded-full border border-white/20">Re Aha Bocha</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Restoring Hope & Building <span class="text-blue-300">Resilient Communities</span></h1>
+                <div class="w-24 h-1.5 bg-blue-400 mx-auto mb-8"></div>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-10 leading-relaxed">Empowering individuals and communities through professional counseling, support programs, and community development initiatives.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-md bg-white text-blue-900 hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                        Get Support
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                    <a href="#about" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-md border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1">
+                        Learn About Us
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Stats Section -->
-    <div class="bg-white py-16">
+    <section class="py-16 bg-blue-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="p-6 rounded-lg hover:bg-gray-50 transition-colors duration-300">
-                    <div class="text-4xl font-bold text-blue-700 mb-2">1,000+</div>
-                    <div class="text-gray-600">Lives Touched</div>
-                    <p class="mt-2 text-sm text-gray-500">Individuals who have received our support services</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8">
+                <!-- Stat 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow duration-300 border-l-4 border-blue-600">
+                    <div class="text-4xl font-bold text-blue-700 mb-3">1,000+</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Lives Touched</h3>
+                    <p class="text-gray-600">Individuals positively impacted through our programs and services</p>
                 </div>
-                <div class="p-6 rounded-lg hover:bg-gray-50 transition-colors duration-300">
-                    <div class="text-4xl font-bold text-blue-700 mb-2">50+</div>
-                    <div class="text-gray-600">Communities Served</div>
-                    <p class="mt-2 text-sm text-gray-500">Across the region with our outreach programs</p>
+                <!-- Stat 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow duration-300 border-l-4 border-green-600">
+                    <div class="text-4xl font-bold text-green-700 mb-3">50+</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Communities Served</h3>
+                    <p class="text-gray-600">Communities across the region benefiting from our initiatives</p>
                 </div>
-                <div class="p-6 rounded-lg hover:bg-gray-50 transition-colors duration-300">
-                    <div class="text-4xl font-bold text-blue-700 mb-2">95%</div>
-                    <div class="text-gray-600">Positive Outcomes</div>
-                    <p class="mt-2 text-sm text-gray-500">Reported improvement in quality of life</p>
+                <!-- Stat 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow duration-300 border-l-4 border-amber-500">
+                    <div class="text-4xl font-bold text-amber-600 mb-3">95%</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Success Rate</h3>
+                    <p class="text-gray-600">Of participants report significant improvement in their lives</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- About Section -->
-    <div id="about" class="bg-gray-50 py-20">
+    <div id="about" class="bg-white py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
                 <div class="mb-10 lg:mb-0">
                     <span class="inline-block mb-4 text-sm font-semibold text-blue-600 uppercase tracking-wider">Our Mission</span>
-                    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Rebuilding Lives, Restoring Hope</h2>
-                    <p class="text-lg text-gray-600 mb-6">
+                    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Rebuilding Lives, <span class="text-blue-600">Restoring Hope</span></h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                         WAR Foundation is dedicated to providing compassionate support and counseling services to individuals facing life's challenges. Our mission is to help people rebuild their lives through professional guidance, community support, and personal development programs.
                     </p>
-                    <p class="text-lg text-gray-600 mb-8">
-                        We believe in the power of human connection and the strength that comes from a supportive community. Our team of experienced counselors and volunteers work together to create a safe space for healing and personal growth.
-                    </p>
-                    <div class="space-y-4">
+                    <div class="space-y-5 mb-10">
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mt-1">
-                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600">
+                                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
                             </div>
-                            <p class="ml-3 text-base text-gray-600">Professional counseling services for individuals and groups</p>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Professional Counseling</h3>
+                                <p class="mt-1 text-gray-600">Personalized support from qualified professionals</p>
+                            </div>
                         </div>
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mt-1">
-                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600">
+                                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
                             </div>
-                            <p class="ml-3 text-base text-gray-600">Community support groups and outreach programs</p>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Community Programs</h3>
+                                <p class="mt-1 text-gray-600">Outreach and support initiatives for all ages</p>
+                            </div>
                         </div>
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mt-1">
-                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-600">
-                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600">
+                                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
                             </div>
-                            <p class="ml-3 text-base text-gray-600">Crisis intervention and trauma support</p>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Skills Development</h3>
+                                <p class="mt-1 text-gray-600">Training programs for personal and professional growth</p>
+                            </div>
                         </div>
                     </div>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <a href="#services" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow-md transition-all">
+                            Our Services
+                            <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-blue-700 bg-white hover:bg-gray-50 shadow-sm hover:shadow transition-all">
+                            Contact Us
+                        </a>
+                    </div>
                 </div>
-                <div class="relative">
-                    <div class="relative rounded-xl overflow-hidden shadow-xl">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Compassionate support" class="w-full h-auto">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-8 text-white">
-                            <blockquote class="relative">
-                                <div class="text-xl font-medium mb-4">
-                                    <p>"The support I received helped me find strength I didn't know I had."</p>
-                                </div>
-                                <footer class="text-sm">
-                                    <span class="font-semibold">Sarah M.</span>
-                                    <span class="text-blue-200">, Support Group Participant</span>
-                                </footer>
-                            </blockquote>
+                <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100">
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-6">
+                        <div class="bg-blue-100 h-64 flex items-center justify-center rounded-lg">
+                            <svg class="h-20 w-20 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
                         </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Our Approach</h3>
+                    <p class="text-gray-600 mb-6">We believe in a holistic approach to healing and personal development, focusing on the whole person and their unique circumstances.</p>
+                    <div class="flex items-center text-sm text-blue-600 font-medium">
+                        <span>Learn more about our methods</span>
+                        <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -298,6 +380,49 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block mb-4 text-sm font-semibold text-blue-600 uppercase tracking-wider">Our Team</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Meet Our Dedicated Team</h2>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Compassionate professionals committed to making a difference in your life</p>
+            </div>
+            
+            @if(isset($staff) && $staff->count() > 0)
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    @foreach($staff as $member)
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div class="h-64 overflow-hidden">
+                                @if($member->photo)
+                                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }} {{ $member->last_name }}" class="w-full h-full object-cover">
+                                @else
+                                    <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                                        <svg class="h-20 w-20 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="p-6 text-center">
+                                <h3 class="text-lg font-semibold text-gray-900">{{ $member->name }} {{ $member->last_name }}</h3>
+                                <p class="text-blue-600 font-medium">{{ $member->department }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <h3 class="mt-2 text-lg font-medium text-gray-900">No team members found</h3>
+                    <p class="mt-1 text-gray-500">Our team information will be available soon.</p>
+                </div>
+            @endif
         </div>
     </div>
 
