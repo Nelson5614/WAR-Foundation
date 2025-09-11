@@ -64,6 +64,7 @@
                         <div class="flex items-center ml-12">
                             <img src="{{ asset('assets/images/logo/logo1.png') }}" alt="WAR Foundation Logo" class="h-14 w-auto">
                         </div>
+                    </div>
                     <button @click="sidebarOpen = !sidebarOpen" 
                             class="hidden md:flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 text-gray-500 transition-colors duration-200"
                             aria-label="Toggle sidebar">
@@ -227,7 +228,7 @@
         </div>
         
         <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
         @stack('modals')
 

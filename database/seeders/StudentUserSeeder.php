@@ -30,6 +30,7 @@ class StudentUserSeeder extends Seeder
                 'name' => 'Test Student',
                 'email' => 'student@example.com',
                 'password' => Hash::make('password'),
+                'role' => User::ROLE_STUDENT,
                 'email_verified_at' => now(),
                 
             ]

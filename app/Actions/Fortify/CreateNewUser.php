@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Spatie\Permission\Models\Role as SpatieRole;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -21,6 +22,8 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
+        // Ensure the default role exists and set it for the user
+        SpatieRole::firstOrCreate(['name' => User::ROLE_STUDENT, 'guard_name' => 'web']);
         // Set default role to student
         $input['role'] = User::ROLE_STUDENT;
 
