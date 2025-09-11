@@ -20,8 +20,14 @@ class DatabaseSeeder extends Seeder
         // Create admin user
         $this->call(AdminUserSeeder::class);
         
+        // Create test student user
+        $this->call(StudentUserSeeder::class);
+        
+        // Create test users with different roles
+        $this->call(UserRolesSeeder::class);
+        $this->call(UserRolesSeeder::class);
+        
         // Seed other data
         $this->call(ProjectsTableSeeder::class);
-        $this->call(UserRolesSeeder::class);
     }
 }

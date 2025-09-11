@@ -117,7 +117,11 @@
             class="wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white dark:bg-dark-2 py-14 px-8 text-center sm:px-12 md:px-[60px]"
             data-wow-delay=".15s">
             <div class="mb-10 text-center">
-                <h1  class="w-full px-5 py-3 text-base font-bold dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none">Re Aha Bocha</h1>
+                <div class="flex justify-center mb-6">
+                    <img src="{{ asset('assets/images/logo/logo1.png') }}" alt="Re Aha Bocha Logo" class="h-24 w-auto">
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Welcome Back</h2>
+                <p class="text-gray-600 dark:text-gray-300">Sign in to your account</p>
             </div>
             <form action="{{ route('login') }}" method="POST">
                 @csrf
@@ -134,25 +138,6 @@
                   class="w-full px-5 py-3 text-base text-white transition duration-300 ease-in-out border rounded-md cursor-pointer border-primary bg-primary hover:bg-blue-dark" />
               </div>
             </form>
-
-            <span class="relative block text-center z-1 mb-7">
-              <span class="absolute left-0 block w-full h-px -z-1 top-1/2 bg-stroke dark:bg-dark-3"></span>
-              <span class="relative z-10 inline-block px-3 text-base bg-white dark:bg-dark-2 text-body-secondary">Connect With</span>
-            </span>
-            <ul class="justify-between -mx-2 mb-9">
-
-
-              <li class="w-full px-2">
-                <a href="{{ route('google.login') }}"
-                  class="flex h-11 items-center justify-center rounded-md bg-[#D64937] transition hover:bg-opacity-90">
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M17.8477 8.17132H9.29628V10.643H15.4342C15.1065 14.0743 12.2461 15.5574 9.47506 15.5574C5.95916 15.5574 2.8306 12.8821 2.8306 9.01461C2.8306 5.29251 5.81018 2.47185 9.47506 2.47185C12.2759 2.47185 13.9742 4.24567 13.9742 4.24567L15.7024 2.47185C15.7024 2.47185 13.3783 0.000145544 9.35587 0.000145544C4.05223 -0.0289334 0 4.30383 0 8.98553C0 13.5218 3.81386 18 9.44526 18C14.4212 18 17.9967 14.7141 17.9967 9.79974C18.0264 8.78198 17.8477 8.17132 17.8477 8.17132Z"
-                      fill="white" />
-                  </svg>
-                </a>
-              </li>
-            </ul>
             <a href="javascript:void(0)" class="inline-block mb-2 text-base text-dark dark:text-white hover:text-primary dark:hover:text-primary">
               Forget Password?
             </a>

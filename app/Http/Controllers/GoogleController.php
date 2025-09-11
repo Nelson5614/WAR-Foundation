@@ -27,38 +27,45 @@ class GoogleController extends Controller
             if ($finduser) {
                 // If user exists, log them in
                 Auth::login($finduser);
-                // Redirect to the intended dashboard
-                return redirect()->intended('dashboard');
+                // Redirect based on stored role
+                return $this->redirectByRole($finduser);
             } else {
-                // If user doesn't exist, create a new user
+                // If user doesn't exist, create a new user with default student role
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
                     'google_id' => $user->id,
-                    'password' => encrypt('dummy') // Generate a random password or keep as is
+                    'role' => User::ROLE_STUDENT,
+                    'password' => encrypt('dummy'), // Generate a random password or keep as is
                 ]);
 
                 // Log the new user in
                 Auth::login($newUser);
 
-                   // Check the role of the authenticated user and redirect accordingly
-            if ('role_id' === 1) {
-                // Redirect to the admin dashboard
-                return redirect()->intended('/admin/dashboard');
-            } elseif ('role_id' === 4) {
-                // Redirect to the student dashboard
-                return redirect()->intended('/student/dashboard');
-            } elseif ('role_id' === 2) {
-                // Redirect to the counselor dashboard
-                return redirect()->intended('/counselor/dashboard');
-            } else {
-                // Redirect to a default dashboard if no role matches
-                return redirect()->intended('/dashboard');
-            }
+                return $this->redirectByRole($newUser);
             }
         } catch (Exception $e) {
             // If there is an error, redirect back to the Google authentication page
             return redirect('auth/google');
+        }
+    }
+
+    /**
+     * Redirect user to dashboard based on role.
+     */
+    protected function redirectByRole(User $user)
+    {
+        switch ($user->role) {
+            case User::ROLE_ADMIN:
+                return redirect()->intended('/admin/dashboard');
+            case User::ROLE_COUNSELOR:
+                return redirect()->intended('/counselor/dashboard');
+            case User::ROLE_STAFF:
+                return redirect()->intended('/staff/dashboard');
+            case User::ROLE_STUDENT:
+                return redirect()->intended('/student/dashboard');
+            default:
+                return redirect()->intended('/dashboard');
         }
     }
 }

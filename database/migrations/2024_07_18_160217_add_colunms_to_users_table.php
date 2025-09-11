@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->nullable();
             $table->unsignedSmallInteger('role_id')->nullable();
             $table->string('license_number')->nullable();
             $table->string('phone')->nullable();
@@ -30,7 +31,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['phone_number','role_id','license_number', 'date_of_birth', 'address']);
+            $table->dropColumn(['role','role_id','license_number','phone','date_of_birth','address']);
         });
     }
 };

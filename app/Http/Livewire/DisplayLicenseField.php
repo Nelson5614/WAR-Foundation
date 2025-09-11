@@ -7,7 +7,7 @@ use Livewire\Component;
 class DisplayLicenseField extends Component
 
 {
-    public $role_id;
+    public $role;
     public $license_number;
 
     public function render()

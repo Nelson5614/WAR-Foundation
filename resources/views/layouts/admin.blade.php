@@ -61,10 +61,10 @@
              :class="{ 'translate-x-0': mobileMenuOpen || sidebarOpen, '-translate-x-full': !mobileMenuOpen && !sidebarOpen }">
             <div class="flex flex-col h-full">
                 <!-- Logo -->
-                <div class="h-16 flex items-center justify-between px-6 border-b border-gray-100">
+                <div class="h-20 flex items-center justify-between px-4 border-b border-gray-100">
                     <div class="flex items-center justify-between w-full">
-                        <div class="flex items-center">
-                            <span class="text-lg mt-3 md:ml-0 lg:ml-0 ml-10 font-semibold text-gray-800 tracking-tight">WAR Foundation</span>
+                        <div class="flex items-center ml-12">
+                            <img src="{{ asset('assets/images/logo/logo1.png') }}" alt="WAR Foundation Logo" class="h-14 w-auto">
                         </div>
                         <button @click="sidebarOpen = !sidebarOpen" 
                                 class="hidden md:flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 text-gray-500 transition-colors duration-200"

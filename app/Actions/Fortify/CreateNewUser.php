@@ -21,22 +21,19 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-        // Determine the validation rules based on role_id
+        // Set default role to student
+        $input['role'] = User::ROLE_STUDENT;
+
+        // Validation rules
         $rules = [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'max:255', 'unique:users'],
-            'date_of_birth' => ['required', 'date', 'max:255'],
+            'phone' => ['required', 'string', 'max:20', 'unique:users'],
+            'date_of_birth' => ['required', 'date', 'before:today'],
             'address' => ['required', 'string', 'max:255'],
-            'role_id' => ['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ];
-
-        // Add the conditional license_number validation
-        if ($input['role_id'] == 2) {
-            $rules['license_number'] = ['required', 'string', 'max:255'];
-        }
 
         // Validate the input data
         Validator::make($input, $rules)->validate();
@@ -48,11 +45,16 @@ class CreateNewUser implements CreatesNewUsers
                 'address' => $input['address'],
                 'date_of_birth' => $input['date_of_birth'],
                 'phone' => $input['phone'],
-                'license_number' => $input['role_id'] == 2 ? $input['license_number'] : null,
-                'role_id' => $input['role_id'],
+                'license_number' => null,
+                'role' => $input['role'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
+                // Create personal team
                 $this->createTeam($user);
+                // Ensure the Spatie role is attached so role-based middleware passes
+                if (! $user->hasRole($user->role)) {
+                    $user->assignRole($user->role);
+                }
             });
         });
     }

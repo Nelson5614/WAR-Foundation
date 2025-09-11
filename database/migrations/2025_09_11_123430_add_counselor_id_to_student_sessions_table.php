@@ -14,7 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::table('student_sessions', function (Blueprint $table) {
-            $table->integer('order')->nullable()->after('date');
+            $table->unsignedBigInteger('counselor_id')->nullable()->after('student_id');
+            
+            $table->foreign('counselor_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('set null');
         });
     }
 
@@ -26,7 +31,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('student_sessions', function (Blueprint $table) {
-            $table->dropColumn('order');
+            $table->dropForeign(['counselor_id']);
+            $table->dropColumn('counselor_id');
         });
     }
 };

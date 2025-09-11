@@ -15,10 +15,20 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
+    <body class="min-h-screen bg-gray-50">
+        <!-- Simple header -->
+        <header class="bg-white shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <!-- Logo is now part of the authentication card -->
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="py-8">
+            <div class="font-sans text-gray-900 antialiased">
+                {{ $slot }}
+            </div>
+        </main>
         @livewireScripts
     </body>
 </html>

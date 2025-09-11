@@ -21,6 +21,28 @@ class User extends Authenticatable
     use HasRoles;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    
+    // Role constants
+    public const ROLE_ADMIN = 'admin';
+    public const ROLE_COUNSELOR = 'counselor';
+    public const ROLE_STUDENT = 'student';
+    public const ROLE_STAFF = 'staff';
+
+    /**
+     * Get the sessions where the user is a student.
+     */
+    public function studentSessions()
+    {
+        return $this->hasMany(StudentSession::class, 'student_id');
+    }
+    
+    /**
+     * Get the sessions where the user is a counselor.
+     */
+    public function counselorSessions()
+    {
+        return $this->hasMany(StudentSession::class, 'counselor_id');
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -31,12 +53,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id',
+        'role',
         'license_number',
         'phone',
         'date_of_birth',
-        'address',
-        'role_id'
+        'address'
     ];
 
     /**
@@ -58,6 +79,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'date_of_birth' => 'date',
     ];
 
     /**
@@ -69,5 +91,35 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    /**
+     * Check if user is an admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
 
+    /**
+     * Check if user is a counselor
+     */
+    public function isCounselor(): bool
+    {
+        return $this->role === self::ROLE_COUNSELOR;
+    }
+
+    /**
+     * Check if user is a student
+     */
+    public function isStudent(): bool
+    {
+        return $this->role === self::ROLE_STUDENT;
+    }
+
+    /**
+     * Check if user is a staff member
+     */
+    public function isStaff(): bool
+    {
+        return $this->role === self::ROLE_STAFF;
+    }
 }

@@ -26,18 +26,17 @@
         }
     </style>
 </head>
-<body class="antialiased bg-gray-50">
+<body class="antialiased bg-gray-50 pt-16">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm">
+    <nav class="fixed w-full bg-white shadow-sm z-50 top-0 left-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <span class="text-2xl font-bold text-blue-800">WAR Foundation</span>
+                        <img src="{{ asset('assets/images/logo/logo1.png') }}" alt="WAR Foundation Logo" class="h-10 w-auto">
                     </div>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8
-                ">
+                <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
                     <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Home</a>
                     <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">About</a>
                     <a href="#services" class="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Services</a>

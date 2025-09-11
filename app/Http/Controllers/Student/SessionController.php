@@ -61,8 +61,7 @@ class SessionController extends Controller
         ]);
 
         // Notify all counselors about the new session request.
-        // Assuming role_id 4 is for counselors. Adjust this if your role IDs are different.
-        $counselors = User::where('role_id', 2)->get();
+        $counselors = User::where('role', User::ROLE_COUNSELOR)->get();
         foreach ($counselors as $counselor) {
             // Notify each counselor using the SessionRequested notification.
             $counselor->notify(new SessionRequested($sessionRequest));

@@ -30,24 +30,18 @@ class RedirectIfAuthenticated
                 //get the authenticated user then
                 $user = Auth::user();
 
-                //redirect them based on their respective roles, lets use a switch statement for this
-
-                switch($user->role_id){
-                    case 1:
-                        //redirect to admin dashboard if role_id is 1
+                // Redirect based on the user's role (string column)
+                switch ($user->role) {
+                    case 'admin':
                         return redirect('admin/dashboard');
-                    case 2:
-                        //redirect to counselor dashboard if role_id is 2
+                    case 'counselor':
                         return redirect('counselor/dashboard');
-                    case 3:
-                        //redirect to member dashboard if role_id is 3
-                        return redirect('member/dashboard');
-                    case 4:
-                        //redirect to student dashboard if role_id is 4
+                    case 'staff':
+                        return redirect('staff/dashboard');
+                    case 'student':
                         return redirect('student/dashboard');
                     default:
-                    //if the role_id doesnt match any given cases return back to home route
-                    return redirect(RouteServiceProvider::HOME);
+                        return redirect(RouteServiceProvider::HOME);
                 }
 
             }

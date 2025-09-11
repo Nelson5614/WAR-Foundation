@@ -17,11 +17,20 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        // Create admin role if it doesn't exist
-        $adminRole = Role::firstOrCreate(['name' => 'admin'], [
-            'name' => 'admin',
-            'guard_name' => 'web'
-        ]);
+        // Create roles if they don't exist
+        $roles = [
+            User::ROLE_ADMIN,
+            User::ROLE_COUNSELOR,
+            User::ROLE_STAFF,
+            User::ROLE_STUDENT,
+        ];
+
+        foreach ($roles as $roleName) {
+            Role::firstOrCreate([
+                'name' => $roleName,
+                'guard_name' => 'web',
+            ]);
+        }
 
         // Create admin user
         $admin = User::firstOrCreate(
@@ -29,8 +38,8 @@ class AdminUserSeeder extends Seeder
             [
                 'name' => 'Admin User',
                 'email' => 'admin@warfoundation.com',
-                'password' => Hash::make('password'), // Change this to a secure password
-                'role_id' => 1, // Assuming 1 is the ID for admin role
+                'password' => Hash::make('password'), // Change this to a secure password in production
+                'role' => User::ROLE_ADMIN,
                 'phone' => '1234567890',
                 'date_of_birth' => '1990-01-01',
                 'address' => 'Admin Address',
@@ -39,7 +48,7 @@ class AdminUserSeeder extends Seeder
         );
 
         // Assign admin role to the user
-        $admin->assignRole('admin');
+        $admin->assignRole(User::ROLE_ADMIN);
 
         // Create a default team for the admin if none exists
         if (! $admin->currentTeam) {

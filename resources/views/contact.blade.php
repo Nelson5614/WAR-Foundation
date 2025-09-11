@@ -301,26 +301,45 @@
             <h3 class="mb-8 text-2xl font-semibold md:text-[28px] md:leading-[1.42] text-dark dark:text-white">
               Send us a Message
             </h3>
-            <form>
+            @if(session('success'))
+              <div class="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                {{ session('success') }}
+              </div>
+            @endif
+            @if($errors->any())
+              <div class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                <ul class="list-disc pl-5">
+                  @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+            <form action="{{ route('contact.submit') }}" method="POST">
+                @csrf
               <div class="mb-[22px]">
-                <label for="fullName" class="block mb-4 text-sm text-body-color dark:text-dark-6">Full Name*</label>
-                <input type="text" name="fullName" placeholder="Adam Gelius"
+                <label for="name" class="block mb-4 text-sm text-body-color dark:text-dark-6">Full Name*</label>
+                <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Your Name" required
                   class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" />
               </div>
               <div class="mb-[22px]">
                 <label for="email" class="block mb-4 text-sm text-body-color dark:text-dark-6">Email*</label>
-                <input type="email" name="email" placeholder="example@yourmail.com"
+                <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="your.email@example.com" required
                   class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" />
               </div>
               <div class="mb-[22px]">
-                <label for="phone" class="block mb-4 text-sm text-body-color dark:text-dark-6">Phone*</label>
-                <input type="text" name="phone" placeholder="+885 1254 5211 552"
+                <label for="phone" class="block mb-4 text-sm text-body-color dark:text-dark-6">Phone (Optional)</label>
+                <input type="text" id="phone" name="phone" value="{{ old('phone') }}" placeholder="+1 234 567 8900"
+                  class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" />
+              </div>
+              <div class="mb-[22px]">
+                <label for="subject" class="block mb-4 text-sm text-body-color dark:text-dark-6">Subject*</label>
+                <input type="text" id="subject" name="subject" value="{{ old('subject') }}" placeholder="How can we help?" required
                   class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none" />
               </div>
               <div class="mb-[30px]">
                 <label for="message" class="block mb-4 text-sm text-body-color dark:text-dark-6">Message*</label>
-                <textarea name="message" rows="1" placeholder="type your message here"
-                  class="bg-transparent w-full text-body-color dark:text-dark-6 placeholder:text-body-color/60 resize-none border-0 border-b border-[#f1f1f1] dark:border-dark-3 pb-3 focus:border-primary focus:outline-none"></textarea>
+                <textarea id="message" name="message" rows="5" placeholder="Type your message....." class="w-full border-0 border-b border-[#E9EDF4] py-3 px-[14px] text-body-color placeholder-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark dark:text-dark-6" required>{{ old('message') }}</textarea>
               </div>
               <div class="mb-0">
                 <button type="submit"

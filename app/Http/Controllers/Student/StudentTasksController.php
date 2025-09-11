@@ -14,8 +14,12 @@ class StudentTasksController extends Controller
      */
     public function index()
     {
-        $tasks = StudentTasks::paginate(10);
-        return view('students.tasks', compact('tasks'));
+        $tasks = StudentTasks::where('user_id', auth()->id())
+            ->orderBy('status')
+            ->orderBy('end_date')
+            ->paginate(10);
+            
+        return view('students.mytasks.index', compact('tasks'));
     }
 
     /**
@@ -36,17 +40,20 @@ class StudentTasksController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title'=>'required|string|max:255',
-            'start_date'=>'required|date|max:255',
-            'end_date'=>'required|date|max:255',
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'start_date' => 'required|date|max:255',
+            'end_date' => 'required|date|max:255',
             'status' => 'required|string|in:active,in_progress,complete',
-            'description'=>'required|string|max:255'
+            'description' => 'required|string|max:255'
         ]);
 
-       StudentTasks::create($request->all());
+        // Add the authenticated user's ID to the validated data
+        $validated['user_id'] = auth()->id();
 
-        return redirect()->back()->with('success', 'You have just added a new Task successfully! Goodluck');
+        StudentTasks::create($validated);
+
+        return redirect()->back()->with('success', 'Task added successfully!');
     }
 
     /**

@@ -9,12 +9,21 @@ class StudentTasks extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
+        'user_id',
         'title',
         'start_date',
         'end_date',
         'description',
         'status'
     ];
+
+    /**
+     * Get the user that owns the task.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

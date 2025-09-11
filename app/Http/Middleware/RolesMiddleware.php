@@ -17,14 +17,8 @@ class RolesMiddleware
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        $roles = [
-            'admin' => 1,
-            'student' => 4,
-            'member' => 3,
-            'counselor' => 2,
-        ];
-        if(!Auth::check() || Auth::user()->role_id !== $roles[$role]){
-            abort(403, 'unautherized access');
+        if (!Auth::check() || !Auth::user()->hasRole($role)) {
+            abort(403, 'Unauthorized access');
         }
         return $next($request);
     }

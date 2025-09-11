@@ -66,10 +66,56 @@
                             </div>
                         </div>
 
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-gray-700">Password <span class="text-red-500">*</span></label>
+                                <input type="password" name="password" id="password" required
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <p class="mt-1 text-xs text-gray-500">Minimum 8 characters</p>
+                            </div>
+                            <div>
+                                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password <span class="text-red-500">*</span></label>
+                                <input type="password" name="password_confirmation" id="password_confirmation" required
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label for="role" class="block text-sm font-medium text-gray-700">Role <span class="text-red-500">*</span></label>
+                                <select name="role" id="role" required
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <option value="">Select Role</option>
+                                    <option value="{{ \App\Models\User::ROLE_STAFF }}" {{ old('role') == \App\Models\User::ROLE_STAFF ? 'selected' : '' }}>Staff</option>
+                                    <option value="{{ \App\Models\User::ROLE_COUNSELOR }}" {{ old('role') == \App\Models\User::ROLE_COUNSELOR ? 'selected' : '' }}>Counselor</option>
+                                    <option value="{{ \App\Models\User::ROLE_ADMIN }}" {{ old('role') == \App\Models\User::ROLE_ADMIN ? 'selected' : '' }}>Admin</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="license_number" class="block text-sm font-medium text-gray-700">License Number</label>
+                                <input type="text" name="license_number" id="license_number" value="{{ old('license_number') }}"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <p class="mt-1 text-xs text-gray-500">Required for counselors</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label for="date_of_birth" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                                <input type="date" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                            <div>
+                                <label for="department" class="block text-sm font-medium text-gray-700">Department <span class="text-red-500">*</span></label>
+                                <input type="text" name="department" id="department" required value="{{ old('department') }}"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        </div>
+
                         <div>
-                            <label for="department" class="block text-sm font-medium text-gray-700">Department <span class="text-red-500">*</span></label>
-                            <input type="text" name="department" id="department" required value="{{ old('department') }}"
-                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                            <textarea name="address" id="address" rows="2"
+                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('address') }}</textarea>
                         </div>
 
                         <div>

@@ -21,7 +21,7 @@
 </head>
 <body>
        <!-- ====== Navbar Section Start -->
-    <div class="absolute top-0 left-0 z-40 flex items-center w-full bg-transparent ud-header">
+    <div x-data="{ open: false }" class="absolute top-0 left-0 z-40 flex items-center w-full bg-transparent ud-header">
         <div class="container">
           <div class="relative flex items-center justify-between -mx-4">
             <div class="max-w-full px-4 w-60">
@@ -38,21 +38,32 @@
               <div>
                 <button
                   id="navbarToggler"
-                  class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
+                  @click="open = !open"
+                  class="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-md text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white lg:hidden"
+                  aria-expanded="false"
                 >
-                  <span
-                    class="relative my-[6px] block h-[2px] w-[30px] bg-white"
-                  ></span>
-                  <span
-                    class="relative my-[6px] block h-[2px] w-[30px] bg-white"
-                  ></span>
-                  <span
-                    class="relative my-[6px] block h-[2px] w-[30px] bg-white"
-                  ></span>
+                  <span class="sr-only">Open main menu</span>
+                  <!-- Hamburger icon -->
+                  <svg x-show="!open" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  </svg>
+                  <!-- X icon -->
+                  <svg x-show="open" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
                 <nav
                   id="navbarCollapse"
-                  class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none dark:lg:bg-transparent xl:px-6"
+                  x-show="open"
+                  @click.away="open = false"
+                  x-transition:enter="transition ease-out duration-100"
+                  x-transition:enter-start="opacity-0 scale-95"
+                  x-transition:enter-end="opacity-100 scale-100"
+                  x-transition:leave="transition ease-in duration-75"
+                  x-transition:leave-start="opacity-100 scale-100"
+                  x-transition:leave-end="opacity-0 scale-95"
+                  class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white dark:bg-dark-2 py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent dark:lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6 lg:flex lg:items-center lg:space-x-1"
+                  :class="{'hidden': !open, 'block': open}"
                 >
                   <ul class="blcok lg:flex 2xl:ml-20">
                     <li class="relative group">

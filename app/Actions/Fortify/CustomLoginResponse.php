@@ -10,17 +10,17 @@ class CustomLoginResponse implements LoginResponseContract
     {
         $user = $request->user();
 
-        switch ($user->role_id) {
-            case 1:
+        switch ($user->role) {
+            case 'admin':
                 $redirectUrl = '/admin/dashboard';
                 break;
-            case 2:
+            case 'counselor':
                 $redirectUrl = '/counselor/dashboard';
                 break;
-            case 3:
-                $redirectUrl = '/member/dashboard';
+            case 'staff':
+                $redirectUrl = '/staff/dashboard';
                 break;
-            case 4:
+            case 'student':
                 $redirectUrl = '/student/dashboard';
                 break;
             default:

@@ -14,7 +14,13 @@ class Staff extends Model
      *
      * @var array<int, string>
      */
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
+        'user_id',
         'name',
         'last_name',
         'phone',
@@ -23,6 +29,14 @@ class Staff extends Model
         'photo',
         'bio'
     ];
+
+    /**
+     * Get the user associated with the staff member.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * The attributes that should be cast.
